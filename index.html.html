@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBZ — Big Brands. Bigger Savings.</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --y:#FFD000;--yd:#E0B800;--blk:#111111;--dark:#1c1c1c;
+  --gray:#f5f5f5;--mid:#888;--red:#E8271C;--green:#006e3c;
+  --bdr:#e5e5e5;--txt:#222;
+  --font:'Barlow',sans-serif;--fc:'Barlow Condensed',sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--txt);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit;cursor:pointer}
+img{display:block}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--blk);color:#fff;font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.3px}
+.topbar span{color:var(--y);font-weight:700}
+
+/* ── HEADER ── */
+header{background:#fff;border-bottom:3px solid var(--y);position:sticky;top:0;z-index:9000;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.hdr{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:18px;height:68px}
+.logo{font-family:var(--fc);font-size:42px;font-weight:900;color:var(--blk);letter-spacing:-2px;line-height:1;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.logo-bee{width:34px;height:34px;background:var(--y);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px}
+.srch{flex:1;display:flex;max-width:580px;border:2px solid var(--blk);border-radius:3px;overflow:hidden}
+.srch input{flex:1;border:none;outline:none;padding:10px 16px;font-family:var(--font);font-size:14px}
+.srch button{background:var(--y);border:none;cursor:pointer;padding:10px 18px;font-size:15px;transition:background .15s}
+.srch button:hover{background:var(--yd)}
+.hdr-act{display:flex;gap:20px;align-items:center;flex-shrink:0}
+.hdr-act a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--blk);transition:color .15s;white-space:nowrap}
+.hdr-act a:hover{color:var(--yd)}
+.hdr-act svg{width:21px;height:21px}
+.cart-wrap{position:relative}
+.cart-badge{position:absolute;top:-7px;right:-9px;background:var(--red);color:#fff;font-size:9px;font-weight:800;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 3px}
+
+/* ── MEGA NAV ── */
+.mainnav{background:var(--blk);position:sticky;top:68px;z-index:8000}
+.navwrap{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{color:#fff;font-size:12px;font-weight:700;letter-spacing:.8px;padding:0 15px;text-transform:uppercase;display:flex;align-items:center;gap:4px;height:44px;transition:background .15s,color .15s;white-space:nowrap;border-bottom:3px solid transparent}
+.nav-item>a:hover,.nav-item>a.active,.nav-item:hover>a{background:var(--y);color:var(--blk);border-bottom-color:var(--yd)}
+.nav-item>a .arr{font-size:8px;opacity:.7}
+.nav-item:hover>a .arr{transform:rotate(180deg)}
+.nav-sale>a{color:var(--y);font-weight:900}
+/* MEGA PANEL */
+.mega{display:none;position:absolute;top:100%;left:0;background:#fff;border-top:3px solid var(--y);box-shadow:0 16px 48px rgba(0,0,0,.14);z-index:9000;min-width:700px;padding:28px 32px;gap:32px}
+.nav-item:hover .mega{display:flex}
+.mcol{flex:1;min-width:140px}
+.mcol-title{font-family:var(--fc);font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--blk);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--y)}
+.mcol ul{list-style:none}
+.mcol ul li a{font-size:13px;color:#444;display:flex;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid #f0f0f0;transition:color .12s,padding-left .12s}
+.mcol ul li a:hover{color:var(--blk);font-weight:600;padding-left:4px}
+.mcol ul li a.red{color:var(--red);font-weight:700}
+.mcol ul li a.grn{color:var(--green);font-weight:700}
+.mega-img{width:180px;flex-shrink:0;border-radius:6px;overflow:hidden;position:relative;cursor:pointer}
+.mega-img img{width:100%;height:220px;object-fit:cover;display:block}
+.mega-img-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 55%)}
+.mega-img-txt{position:absolute;bottom:0;left:0;right:0;padding:14px}
+.mega-img-txt p{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--y);margin-bottom:3px}
+.mega-img-txt strong{font-family:var(--fc);font-size:18px;font-weight:900;color:#fff;display:block;line-height:1.1;margin-bottom:8px}
+.mega-img-txt span{display:inline-block;background:var(--y);color:var(--blk);font-size:10px;font-weight:800;padding:3px 10px;border-radius:2px;letter-spacing:.8px;text-transform:uppercase}
+
+/* ── TICKER ── */
+.ticker{background:var(--y);overflow:hidden;padding:9px 0}
+.tick-t{display:flex;animation:tick 30s linear infinite;white-space:nowrap}
+.tick-i{display:inline-flex;align-items:center;gap:14px;font-family:var(--fc);font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--blk);padding:0 32px}
+.tick-dot{width:5px;height:5px;background:var(--blk);border-radius:50%;flex-shrink:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── PAGES ── */
+.page{display:none}.page.active{display:block}
+.sec{padding:48px 0}.sec-alt{background:var(--gray)}
+.con{max-width:1400px;margin:0 auto;padding:0 24px}
+.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;gap:12px}
+.sec-ttl{font-family:var(--fc);font-weight:900;font-size:clamp(24px,3vw,34px);text-transform:uppercase;line-height:1;color:var(--blk)}
+.sec-ttl .ac{color:var(--yd)}
+.sec-sub{font-size:13px;color:var(--mid);margin-top:4px}
+.va{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--blk);border-bottom:2px solid var(--y);padding-bottom:2px;white-space:nowrap;transition:color .15s}
+.va:hover{color:var(--yd)}
+
+/* ── HERO BANNER (inner pages) ── */
+.pg-hero{position:relative;height:300px;overflow:hidden;display:flex;align-items:flex-end}
+.pg-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.pg-ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.38) 55%,transparent 100%)}
+.pg-cnt{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 24px 36px;width:100%}
+.pg-tag{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--y);margin-bottom:6px}
+.pg-h1{font-family:var(--fc);font-weight:900;font-size:clamp(34px,5vw,58px);color:#fff;text-transform:uppercase;line-height:1;margin-bottom:8px}
+.pg-h1 .hl{color:var(--y)}
+.pg-sub{font-size:13px;color:rgba(255,255,255,.72);max-width:480px;margin-bottom:16px}
+.pg-btn{display:inline-flex;align-items:center;gap:6px;background:var(--y);color:var(--blk);font-family:var(--font);font-weight:800;font-size:12px;letter-spacing:.5px;text-transform:uppercase;padding:11px 22px;border-radius:2px;border:none;cursor:pointer;transition:background .15s}
+.pg-btn:hover{background:var(--yd)}
+.pg-bc{display:flex;align-items:center;gap:6px;margin-top:12px}
+.pg-bc a{font-size:11px;color:rgba(255,255,255,.5)}.pg-bc a:hover{color:var(--y)}
+.pg-bc span{font-size:11px;color:rgba(255,255,255,.3)}
+
+/* ── PAGE SUB-NAV ── */
+.pg-nav{background:#fff;border-bottom:2px solid var(--bdr);position:sticky;top:112px;z-index:700}
+.pg-navw{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none}
+.pg-navw::-webkit-scrollbar{display:none}
+.pg-navw a{font-size:12px;font-weight:600;color:#555;padding:11px 16px;white-space:nowrap;border-bottom:3px solid transparent;transition:color .12s,border-color .12s;letter-spacing:.3px;text-transform:uppercase}
+.pg-navw a:hover,.pg-navw a.pna{color:var(--blk);border-bottom-color:var(--y)}
+.pg-navw a.pna-red{color:var(--red);font-weight:800;border-bottom-color:var(--red)}
+
+/* ── CATEGORY TILES (Max-style horizontal scroll) ── */
+.cat-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.cat-scroll::-webkit-scrollbar{display:none}
+.cat-tile{flex-shrink:0;width:130px;cursor:pointer;text-align:center;transition:transform .2s}
+.cat-tile:hover{transform:translateY(-3px)}
+.cat-tile-img{width:130px;height:130px;border-radius:50%;overflow:hidden;border:3px solid var(--bdr);transition:border-color .15s;margin:0 auto 10px}
+.cat-tile:hover .cat-tile-img{border-color:var(--y)}
+.cat-tile-img img{width:100%;height:100%;object-fit:cover}
+.cat-tile p{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--blk)}
+
+/* ── PRODUCT GRID ── */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prod-card{background:#fff;border:1.5px solid var(--bdr);border-radius:6px;overflow:hidden;transition:box-shadow .2s,transform .18s;position:relative}
+.prod-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.11);transform:translateY(-4px)}
+.prod-img{aspect-ratio:3/4;background:var(--gray);position:relative;overflow:hidden}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.prod-card:hover .prod-img img{transform:scale(1.05)}
+.pbadge{position:absolute;top:10px;left:10px;color:#fff;font-family:var(--fc);font-weight:800;font-size:11px;padding:3px 9px;border-radius:2px;letter-spacing:.5px;z-index:2;text-transform:uppercase;background:var(--red)}
+.pbadge.nb{background:var(--blk)}
+.pbadge.gb{background:var(--green)}
+.pbadge.clr{background:#7b2d00}
+.pwish{position:absolute;top:9px;right:9px;background:rgba(255,255,255,.92);border:1.5px solid var(--bdr);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;z-index:2;cursor:pointer;transition:all .15s}
+.pwish:hover{border-color:var(--red);color:var(--red)}
+.prod-info{padding:12px}
+.pbrand{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:3px}
+.pname{font-size:12px;font-weight:600;color:var(--blk);margin-bottom:8px;line-height:1.4;min-height:34px}
+.pprice{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pnow{font-family:var(--fc);font-weight:900;font-size:18px;color:var(--blk)}
+.pwas{font-size:11px;color:var(--mid);text-decoration:line-through}
+.poff{font-size:10px;font-weight:700;color:var(--red);background:rgba(232,39,28,.08);padding:2px 5px;border-radius:2px}
+.padd{display:none;width:calc(100% - 24px);margin:0 12px 12px;padding:9px;background:var(--blk);color:#fff;border:none;border-radius:2px;font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:background .15s}
+.prod-card:hover .padd{display:block}
+.padd:hover{background:var(--y);color:var(--blk)}
+
+/* ── SECTION DIVIDER ── */
+.sdiv{display:flex;align-items:center;gap:14px;margin:36px 0 20px}
+.sdiv-line{flex:1;height:1px;background:var(--bdr)}
+.sdiv h3{font-family:var(--fc);font-weight:900;font-size:18px;text-transform:uppercase;letter-spacing:1px;color:var(--blk);white-space:nowrap}
+.sdiv h3 span{color:var(--yd)}
+.sdiv-pill{background:var(--y);color:var(--blk);font-family:var(--fc);font-size:10px;font-weight:800;padding:3px 10px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;flex-shrink:0}
+
+/* ── DEAL/CLEARANCE BANNER ── */
+.deal-bar{background:linear-gradient(135deg,#6b1a00 0%,#c0392b 100%);padding:0}
+.deal-bar-inner{max-width:1400px;margin:0 auto;padding:26px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.deal-bar-txt h3{font-family:var(--fc);font-weight:900;font-size:clamp(18px,2.5vw,26px);color:#fff;text-transform:uppercase;line-height:1;margin-bottom:3px}
+.deal-bar-txt p{font-size:12px;color:rgba(255,255,255,.72)}
+.deal-chips{display:flex;gap:8px;flex-wrap:wrap}
+.deal-chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:3px;padding:6px 12px;text-align:center;min-width:72px}
+.deal-chip strong{font-family:var(--fc);font-size:20px;font-weight:900;color:var(--y);display:block;line-height:1}
+.deal-chip span{font-size:9px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.8px}
+.deal-bar-btn{background:var(--y);color:var(--blk);font-family:var(--font);font-weight:800;font-size:12px;letter-spacing:.5px;text-transform:uppercase;padding:11px 22px;border-radius:2px;border:none;cursor:pointer;margin-left:auto;white-space:nowrap;flex-shrink:0;transition:background .15s}
+.deal-bar-btn:hover{background:var(--yd)}
+.clr-section{background:#fff5f5;padding:36px 0}
+.clr-section .sdiv h3{color:#7b2d00}
+.clr-section .sdiv h3 span{color:#c0392b}
+.clr-section .sdiv-line{background:#f8b4b4}
+
+/* ── PROMO CARDS (2-up) ── */
+.promo-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.promo-card{border-radius:8px;overflow:hidden;position:relative;min-height:180px;display:flex;align-items:flex-end;padding:24px;cursor:pointer;transition:transform .2s}
+.promo-card:hover{transform:scale(1.015)}
+.promo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.promo-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.15) 60%)}
+.promo-cnt{position:relative;z-index:1}
+.promo-tag{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--y);margin-bottom:4px}
+.promo-h{font-family:var(--fc);font-weight:900;font-size:24px;color:#fff;text-transform:uppercase;line-height:1.05;margin-bottom:7px}
+.promo-pct{display:inline-block;background:var(--y);color:var(--blk);font-family:var(--fc);font-weight:900;font-size:11px;padding:3px 10px;border-radius:2px;text-transform:uppercase;letter-spacing:1px}
+
+/* ── BRAND WALL ── */
+.brand-wall{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+.brand-tile{background:#fff;border:1.5px solid var(--bdr);border-radius:6px;padding:18px 10px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;min-height:84px;gap:7px;position:relative;overflow:hidden;isolation:isolate}
+.brand-tile::before{content:'';position:absolute;inset:0;background:var(--y);transform:translateY(101%);transition:transform .22s ease;z-index:0;pointer-events:none}
+.brand-tile:hover{border-color:var(--yd);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.brand-tile:hover::before{transform:translateY(0)}
+.brand-tile-name{font-family:var(--fc);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--blk);text-align:center;line-height:1.25;position:relative;z-index:1;transition:color .15s;pointer-events:none}
+.brand-tile-disc{font-size:9px;font-weight:700;color:var(--red);letter-spacing:.3px;position:relative;z-index:1;transition:color .15s;text-transform:uppercase;pointer-events:none}
+.brand-tile:hover .brand-tile-disc{color:var(--blk)}
+
+/* ── BRAND HERO SECTION (homepage) ── */
+.brand-hero-sec{background:var(--blk);padding:56px 0}
+.brand-hero-hd{text-align:center;margin-bottom:40px}
+.brand-hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--y);color:var(--blk);font-family:var(--fc);font-weight:900;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:14px}
+.brand-hero-ttl{font-family:var(--fc);font-weight:900;font-size:clamp(36px,5vw,58px);color:#fff;text-transform:uppercase;line-height:.95;letter-spacing:-1px;margin-bottom:10px}
+.brand-hero-ttl .yl{color:var(--y)}
+.brand-hero-sub{font-size:13px;color:rgba(255,255,255,.5);letter-spacing:.3px}
+.brand-marquee-wrap{overflow:hidden;margin-bottom:10px;width:100%}
+.brand-marquee{display:flex;gap:12px;animation:marquee 28s linear infinite;width:max-content;will-change:transform}
+.brand-marquee-wrap.rev .brand-marquee{animation-direction:reverse;animation-duration:32s}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.bm-card{flex-shrink:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:14px 22px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:background .2s,border-color .2s;min-width:140px}
+.bm-card:hover{background:var(--y);border-color:var(--y)}
+.bm-card-name{font-family:var(--fc);font-weight:900;font-size:14px;letter-spacing:.5px;text-transform:uppercase;color:#fff;transition:color .15s;white-space:nowrap}
+.bm-card:hover .bm-card-name{color:var(--blk)}
+.bm-card-off{font-size:9px;font-weight:700;color:var(--y);letter-spacing:.5px;text-transform:uppercase;transition:color .15s}
+.bm-card:hover .bm-card-off{color:rgba(0,0,0,.65)}
+.brand-hero-bottom{display:flex;align-items:center;justify-content:center;gap:40px;margin-top:36px;flex-wrap:wrap}
+.bhstat{text-align:center}
+.bhstat strong{font-family:var(--fc);font-weight:900;font-size:34px;color:var(--y);display:block;line-height:1}
+.bhstat span{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:1px;text-transform:uppercase}
+.bhstat-div{width:1px;height:40px;background:rgba(255,255,255,.12)}
+.brand-hero-cta{display:inline-flex;align-items:center;gap:7px;background:var(--y);color:var(--blk);font-family:var(--font);font-weight:800;font-size:12px;letter-spacing:.5px;text-transform:uppercase;padding:12px 24px;border-radius:2px;border:none;cursor:pointer;transition:background .15s;margin-top:32px}
+.brand-hero-cta:hover{background:var(--yd)}
+
+/* ── INLINE BRAND SHOWCASE (per-category pages) ── */
+.brand-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bs-card{border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;min-height:100px;display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.bs-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.bs-card-bg{display:none}
+.bs-card-ov{display:none}
+.bs-card-cnt{position:relative}
+.bs-card-label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
+.bs-card-name{font-family:var(--fc);font-weight:900;font-size:20px;text-transform:uppercase;line-height:1;margin-bottom:5px}
+.bs-card-pill{display:inline-block;font-family:var(--fc);font-weight:800;font-size:9px;padding:3px 9px;border-radius:2px;letter-spacing:1px;text-transform:uppercase}
+
+/* ── HOME HERO ── */
+.home-hero{position:relative;height:520px;overflow:hidden;display:flex;align-items:flex-end}
+.home-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.home-hero-ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.3) 55%,transparent 100%)}
+.home-hero-cnt{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 24px 56px;width:100%}
+.hero-tag{display:inline-flex;align-items:center;background:var(--y);color:var(--blk);font-family:var(--fc);font-weight:900;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;padding:5px 13px;border-radius:2px;margin-bottom:14px}
+.hero-h1{font-family:var(--fc);font-weight:900;font-size:clamp(44px,6vw,78px);line-height:.93;text-transform:uppercase;letter-spacing:-1.5px;color:#fff;margin-bottom:14px}
+.hero-h1 .yl{color:var(--y)}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.78);max-width:420px;line-height:1.6;margin-bottom:24px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-y{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:2px;font-family:var(--font);font-weight:800;font-size:13px;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;border:none;background:var(--y);color:var(--blk);transition:background .15s,transform .15s}
+.btn-y:hover{background:var(--yd);transform:translateY(-2px)}
+.btn-ol{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:2px;font-family:var(--font);font-weight:800;font-size:13px;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45);transition:border-color .15s,color .15s}
+.btn-ol:hover{border-color:var(--y);color:var(--y)}
+.hero-stats{display:flex;gap:28px;margin-top:28px}
+.hstat strong{font-family:var(--fc);font-size:28px;font-weight:900;color:var(--y);display:block;line-height:1}
+.hstat span{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.5px;text-transform:uppercase}
+
+/* ── FEATURES STRIP ── */
+.feat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px 0;border-bottom:1px solid var(--bdr)}
+.feat-card{display:flex;align-items:center;gap:12px;padding:14px 18px;background:#fff;border:1.5px solid var(--bdr);border-radius:5px}
+.feat-ic{font-size:20px;width:42px;height:42px;background:var(--y);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat-card p{font-size:13px;font-weight:700;color:var(--blk);margin-bottom:2px}
+.feat-card span{font-size:11px;color:var(--mid)}
+
+/* ── FLASH SALE ── */
+.flash{background:var(--blk);padding:36px 0}
+.flash-w{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:40px}
+.flash-lbl{flex-shrink:0}
+.flash-ttl{font-family:var(--fc);font-weight:900;font-size:38px;color:var(--y);text-transform:uppercase;line-height:1}
+.flash-sub{font-size:11px;color:#888;margin-top:3px}
+.cd{display:flex;gap:8px;margin-top:10px;align-items:flex-start}
+.cd-u{text-align:center}
+.cd-n{background:var(--y);color:var(--blk);font-family:var(--fc);font-weight:900;font-size:30px;width:60px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:3px}
+.cd-l{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#666;margin-top:4px}
+.cd-sep{color:var(--y);font-family:var(--fc);font-size:30px;font-weight:900;padding-top:4px}
+.flash-prods{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.fp{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:12px;cursor:pointer;transition:background .15s;text-align:center}
+.fp:hover{background:rgba(255,208,0,.09);border-color:rgba(255,208,0,.3)}
+.fp em{font-size:36px;display:block;margin-bottom:4px}
+.fp-br{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#777}
+.fp-nm{font-size:11px;font-weight:600;color:#ddd;margin:3px 0}
+.fp-pr{display:flex;justify-content:center;align-items:baseline;gap:5px}
+.fp-now{font-family:var(--fc);font-weight:900;font-size:16px;color:var(--y)}
+.fp-was{font-size:10px;color:#555;text-decoration:line-through}
+
+/* ── REVIEWS ── */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rev-card{background:#fff;border:1.5px solid var(--bdr);border-radius:6px;padding:20px}
+.stars{color:var(--y);font-size:13px;margin-bottom:8px;letter-spacing:2px}
+.rev-txt{font-size:12px;color:#555;line-height:1.7;font-style:italic;margin-bottom:12px}
+.rev-auth{display:flex;align-items:center;gap:9px}
+.rev-av{width:34px;height:34px;border-radius:50%;background:var(--y);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:var(--blk);flex-shrink:0}
+.rev-nm{font-size:12px;font-weight:700;color:var(--blk)}
+.rev-lc{font-size:10px;color:var(--mid)}
+
+/* ── NEWSLETTER ── */
+.nl{background:var(--y);padding:48px 0}
+.nl-i{max-width:560px;margin:0 auto;text-align:center;padding:0 24px}
+.nl-i h2{font-family:var(--fc);font-weight:900;font-size:34px;text-transform:uppercase;color:var(--blk);margin-bottom:6px}
+.nl-i p{font-size:13px;color:#444;margin-bottom:20px}
+.nl-form{display:flex;gap:8px;max-width:420px;margin:0 auto}
+.nl-form input{flex:1;padding:12px 15px;border:2px solid var(--blk);border-radius:2px;font-family:var(--font);font-size:14px;outline:none}
+.nl-form button{padding:12px 20px;background:var(--blk);color:var(--y);border:none;border-radius:2px;font-family:var(--font);font-weight:700;font-size:12px;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.nl-form button:hover{background:#333}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:#ccc;padding:48px 0 0}
+.ftr-g{max-width:1400px;margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:32px}
+.ftr-logo{font-family:var(--fc);font-size:36px;font-weight:900;color:#fff;display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.ftr-logo .bee{width:28px;height:28px;background:var(--y);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.ftr-brand p{font-size:12px;line-height:1.75;color:#777;margin-bottom:14px}
+.soc-row{display:flex;gap:7px}
+.soc{width:32px;height:32px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;transition:background .15s;color:#ccc;font-weight:700}
+.soc:hover{background:var(--y);color:var(--blk);border-color:var(--y)}
+.ftr-col h4{font-family:var(--fc);font-weight:800;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:#fff;margin-bottom:14px;padding-bottom:7px;border-bottom:2px solid var(--y);display:inline-block}
+.ftr-col ul{list-style:none}
+.ftr-col ul li{margin-bottom:8px}
+.ftr-col ul a{color:#777;font-size:12px;transition:color .13s}
+.ftr-col ul a:hover{color:var(--y)}
+.ftr-btm{border-top:1px solid rgba(255,255,255,.07);padding:16px 24px;max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ftr-btm p{font-size:11px;color:#444}
+.pay-row{display:flex;gap:6px}
+.pay{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:3px 8px;font-size:10px;font-weight:700;color:#888;letter-spacing:.4px}
+
+/* ── CART ── */
+.cart-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1999}
+.cart-ov.open{display:block}
+.cart-drw{position:fixed;right:-400px;top:0;bottom:0;width:380px;background:#fff;z-index:2000;transition:right .3s ease;display:flex;flex-direction:column;box-shadow:-4px 0 24px rgba(0,0,0,.14)}
+.cart-drw.open{right:0}
+.cart-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1.5px solid var(--bdr);background:var(--blk);color:#fff}
+.cart-hd h3{font-family:var(--fc);font-weight:800;font-size:18px;text-transform:uppercase}
+.cart-cls{background:none;border:none;color:#fff;font-size:19px;cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .15s}
+.cart-cls:hover{background:rgba(255,255,255,.1)}
+.cart-items{flex:1;overflow-y:auto;padding:14px}
+.ci{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--bdr)}
+.ci-pic{width:58px;height:58px;background:var(--gray);border-radius:4px;overflow:hidden;flex-shrink:0}
+.ci-pic img{width:100%;height:100%;object-fit:cover}
+.ci-info{flex:1}
+.ci-br{font-size:9px;font-weight:700;color:#999;letter-spacing:1px;text-transform:uppercase}
+.ci-nm{font-size:12px;font-weight:600;color:var(--blk);margin:2px 0}
+.ci-pr{font-family:var(--fc);font-weight:800;font-size:16px;color:var(--blk)}
+.ci-rm{font-size:16px;color:#bbb;cursor:pointer;background:none;border:none;transition:color .15s;flex-shrink:0}
+.ci-rm:hover{color:var(--red)}
+.cart-ftr{padding:14px 18px;border-top:1.5px solid var(--bdr)}
+.cart-tot{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cart-tot span{font-size:13px;color:#888}
+.cart-tot strong{font-family:var(--fc);font-size:24px;font-weight:900;color:var(--blk)}
+.cart-chk{width:100%;padding:14px;background:var(--y);border:none;border-radius:2px;font-family:var(--font);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.4px;cursor:pointer;transition:background .15s}
+.cart-chk:hover{background:var(--yd)}
+
+@media(max-width:1100px){.prod-grid{grid-template-columns:repeat(3,1fr)}.brand-wall{grid-template-columns:repeat(4,1fr)}.ftr-g{grid-template-columns:repeat(3,1fr)}.flash-prods{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.prod-grid{grid-template-columns:repeat(2,1fr)}.promo-row{grid-template-columns:1fr}.feat-strip{grid-template-columns:repeat(2,1fr)}.rev-grid{grid-template-columns:1fr}.flash-w{flex-direction:column}.flash-prods{display:none}.ftr-g{grid-template-columns:1fr 1fr}.home-hero{height:380px}.pg-hero{height:230px}.hdr{flex-wrap:wrap;height:auto;padding:10px 16px}.srch{order:3;width:100%;max-width:none}.hero-stats{display:none}.deal-bar-btn{margin-left:0}.brand-wall{grid-template-columns:repeat(2,1fr)}.brand-showcase{grid-template-columns:1fr 1fr}.bhstat-div{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">🐝 FREE DELIVERY above <span>AED 199</span> &nbsp;·&nbsp; Up to <span>80% OFF</span> Big Brands &nbsp;·&nbsp; New drops daily — Tommy Hilfiger · Calvin Klein · Reebok · Nine West</div>
+
+<header>
+  <div class="hdr">
+    <div class="logo" onclick="go('home')"><div class="logo-bee">🐝</div>BBZ</div>
+    <div class="srch">
+      <input type="text" id="srchIn" placeholder="Search brands, products, categories…" onkeyup="if(event.key==='Enter')doSearch()">
+      <button onclick="doSearch()">🔍</button>
+    </div>
+    <div class="hdr-act">
+      <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Account</a>
+      <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Wishlist</a>
+      <div class="cart-wrap"><a onclick="openCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Cart</a><div class="cart-badge" id="cBadge">0</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ MEGA NAV ══ -->
+<nav class="mainnav">
+  <div class="navwrap">
+
+    <div class="nav-item">
+      <a onclick="go('women')" id="nav-women">Women <span class="arr">▾</span></a>
+      <div class="mega">
+        <div class="mcol"><div class="mcol-title">Clothing</div><ul>
+          <li><a onclick="go('women')">Dresses & Jumpsuits</a></li>
+          <li><a onclick="go('women')">Tops & Blouses</a></li>
+          <li><a onclick="go('women')">T-Shirts & Tanks</a></li>
+          <li><a onclick="go('women')">Jeans & Trousers</a></li>
+          <li><a onclick="go('women')">Co-ord Sets</a></li>
+          <li><a onclick="go('women')">Activewear</a></li>
+          <li><a onclick="go('women')">Abayas & Modest Wear</a></li>
+          <li><a onclick="go('women')" class="red">🔥 Women's Sale</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Footwear</div><ul>
+          <li><a onclick="go('footwear')">Heels & Pumps</a></li>
+          <li><a onclick="go('footwear')">Sneakers</a></li>
+          <li><a onclick="go('footwear')">Boots & Ankle Boots</a></li>
+          <li><a onclick="go('footwear')">Sandals & Flats</a></li>
+          <li><a onclick="go('footwear')">Ballet Flats</a></li>
+        </ul><div class="mcol-title" style="margin-top:16px">Accessories</div><ul>
+          <li><a onclick="go('handbags')">Handbags & Totes</a></li>
+          <li><a onclick="go('handbags')">Crossbody Bags</a></li>
+          <li><a onclick="go('women')">Belts & Scarves</a></li>
+          <li><a onclick="go('women')">Sunglasses & Jewellery</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Shop by Brand</div><ul>
+          <li><a onclick="go('brands')">Tommy Hilfiger</a></li>
+          <li><a onclick="go('brands')">Calvin Klein</a></li>
+          <li><a onclick="go('brands')">Nine West</a></li>
+          <li><a onclick="go('brands')">DKNY</a></li>
+          <li><a onclick="go('brands')">Ralph Lauren</a></li>
+          <li><a onclick="go('brands')">Naturalizer</a></li>
+          <li><a onclick="go('brands')" class="grn">→ View All Brands</a></li>
+        </ul></div>
+        <div class="mega-img" onclick="go('women')">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80&auto=format&fit=crop" alt="Women SS26">
+          <div class="mega-img-ov"></div>
+          <div class="mega-img-txt"><p>New In</p><strong>Women's SS 2026</strong><span>Up to 75% Off</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a onclick="go('men')" id="nav-men">Men <span class="arr">▾</span></a>
+      <div class="mega">
+        <div class="mcol"><div class="mcol-title">Clothing</div><ul>
+          <li><a onclick="go('men')">Shirts</a></li>
+          <li><a onclick="go('men')">Polos</a></li>
+          <li><a onclick="go('men')">T-Shirts</a></li>
+          <li><a onclick="go('men')">Jeans & Trousers</a></li>
+          <li><a onclick="go('men')">Shorts</a></li>
+          <li><a onclick="go('men')">Activewear & Tracksuits</a></li>
+          <li><a onclick="go('men')">Jackets & Blazers</a></li>
+          <li><a onclick="go('men')" class="red">🔥 Men's Sale</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Footwear</div><ul>
+          <li><a onclick="go('footwear')">Sneakers</a></li>
+          <li><a onclick="go('footwear')">Formal Shoes</a></li>
+          <li><a onclick="go('footwear')">Boots</a></li>
+          <li><a onclick="go('footwear')">Sandals & Sliders</a></li>
+          <li><a onclick="go('footwear')">Sports Shoes</a></li>
+        </ul><div class="mcol-title" style="margin-top:16px">Accessories</div><ul>
+          <li><a onclick="go('men')">Bags & Backpacks</a></li>
+          <li><a onclick="go('men')">Belts & Wallets</a></li>
+          <li><a onclick="go('men')">Caps & Sunglasses</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Shop by Brand</div><ul>
+          <li><a onclick="go('brands')">Tommy Hilfiger</a></li>
+          <li><a onclick="go('brands')">Ralph Lauren</a></li>
+          <li><a onclick="go('brands')">Levi's</a></li>
+          <li><a onclick="go('brands')">Jack & Jones</a></li>
+          <li><a onclick="go('brands')">Reebok</a></li>
+          <li><a onclick="go('brands')">Puma</a></li>
+          <li><a onclick="go('brands')" class="grn">→ View All Brands</a></li>
+        </ul></div>
+        <div class="mega-img" onclick="go('men')">
+          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&q=80&auto=format&fit=crop" alt="Men SS26">
+          <div class="mega-img-ov"></div>
+          <div class="mega-img-txt"><p>New In</p><strong>Men's SS 2026</strong><span>Up to 65% Off</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a onclick="go('kids')" id="nav-kids">Kids <span class="arr">▾</span></a>
+      <div class="mega">
+        <div class="mcol"><div class="mcol-title">By Age Group</div><ul>
+          <li><a onclick="go('kids')">Baby (0–12 Months)</a></li>
+          <li><a onclick="go('kids')">Toddler (1–3 Years)</a></li>
+          <li><a onclick="go('kids')">Little Kids (3–6 Years)</a></li>
+          <li><a onclick="go('kids')">Big Kids (6–9 Years)</a></li>
+          <li><a onclick="go('kids')">Tweens (9–14 Years)</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Girls</div><ul>
+          <li><a onclick="go('kids')">Dresses & Skirts</a></li>
+          <li><a onclick="go('kids')">Tops & T-Shirts</a></li>
+          <li><a onclick="go('kids')">Jeans & Leggings</a></li>
+          <li><a onclick="go('kids')">Shoes</a></li>
+          <li><a onclick="go('kids')" class="red">🔥 Girls Sale</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Boys</div><ul>
+          <li><a onclick="go('kids')">Shirts & Polos</a></li>
+          <li><a onclick="go('kids')">T-Shirts</a></li>
+          <li><a onclick="go('kids')">Jeans & Shorts</a></li>
+          <li><a onclick="go('kids')">Shoes & Sneakers</a></li>
+          <li><a onclick="go('kids')" class="red">🔥 Boys Sale</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Brands</div><ul>
+          <li><a onclick="go('brands')">Carter's</a></li>
+          <li><a onclick="go('brands')">Old Navy</a></li>
+          <li><a onclick="go('brands')">Aeropostale</a></li>
+          <li><a onclick="go('brands')">Reebok Kids</a></li>
+          <li><a onclick="go('brands')">Puma Kids</a></li>
+          <li><a onclick="go('brands')" class="grn">→ All Kids Brands</a></li>
+        </ul></div>
+        <div class="mega-img" onclick="go('kids')">
+          <img src="https://images.unsplash.com/photo-1471286174890-9c112ac6a979?w=400&q=80&auto=format&fit=crop" alt="Kids">
+          <div class="mega-img-ov"></div>
+          <div class="mega-img-txt"><p>Up to</p><strong>Kids 80% Off</strong><span>Shop Now</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a onclick="go('handbags')" id="nav-handbags">Handbags <span class="arr">▾</span></a>
+      <div class="mega">
+        <div class="mcol"><div class="mcol-title">By Type</div><ul>
+          <li><a onclick="go('handbags')">Tote Bags</a></li>
+          <li><a onclick="go('handbags')">Crossbody Bags</a></li>
+          <li><a onclick="go('handbags')">Shoulder Bags</a></li>
+          <li><a onclick="go('handbags')">Clutches & Evening</a></li>
+          <li><a onclick="go('handbags')">Mini Bags</a></li>
+          <li><a onclick="go('handbags')">Backpacks</a></li>
+          <li><a onclick="go('handbags')" class="red">🔥 Bag Sale</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Brands</div><ul>
+          <li><a onclick="go('brands')">Calvin Klein</a></li>
+          <li><a onclick="go('brands')">Nine West</a></li>
+          <li><a onclick="go('brands')">DKNY</a></li>
+          <li><a onclick="go('brands')">Tommy Hilfiger</a></li>
+          <li><a onclick="go('brands')">Naturalizer</a></li>
+          <li><a onclick="go('brands')" class="grn">→ All Bag Brands</a></li>
+        </ul></div>
+        <div class="mega-img" onclick="go('handbags')">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80&auto=format&fit=crop" alt="Handbags">
+          <div class="mega-img-ov"></div>
+          <div class="mega-img-txt"><p>From AED 89</p><strong>Designer Bags</strong><span>Up to 70% Off</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a onclick="go('footwear')" id="nav-footwear">Footwear <span class="arr">▾</span></a>
+      <div class="mega">
+        <div class="mcol"><div class="mcol-title">Women's Shoes</div><ul>
+          <li><a onclick="go('footwear')">Heels & Pumps</a></li>
+          <li><a onclick="go('footwear')">Sneakers</a></li>
+          <li><a onclick="go('footwear')">Boots & Ankle Boots</a></li>
+          <li><a onclick="go('footwear')">Sandals & Flats</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Men's Shoes</div><ul>
+          <li><a onclick="go('footwear')">Sneakers</a></li>
+          <li><a onclick="go('footwear')">Formal Shoes</a></li>
+          <li><a onclick="go('footwear')">Boots</a></li>
+          <li><a onclick="go('footwear')">Sandals & Sliders</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Kids' Shoes</div><ul>
+          <li><a onclick="go('footwear')">Girls' Shoes</a></li>
+          <li><a onclick="go('footwear')">Boys' Shoes</a></li>
+          <li><a onclick="go('footwear')">Baby Shoes (0–3 Yrs)</a></li>
+          <li><a onclick="go('footwear')">Sports & School</a></li>
+        </ul></div>
+        <div class="mega-img" onclick="go('footwear')">
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80&auto=format&fit=crop" alt="Footwear">
+          <div class="mega-img-ov"></div>
+          <div class="mega-img-txt"><p>Skechers · Reebok · Nine West</p><strong>Footwear Deals</strong><span>Up to 60% Off</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item"><a onclick="go('beauty')" id="nav-beauty">Beauty <span class="arr">▾</span></a>
+      <div class="mega">
+        <div class="mcol"><div class="mcol-title">Categories</div><ul>
+          <li><a onclick="go('beauty')">Fragrances</a></li>
+          <li><a onclick="go('beauty')">Skincare</a></li>
+          <li><a onclick="go('beauty')">Makeup</a></li>
+          <li><a onclick="go('beauty')">Bath & Body</a></li>
+          <li><a onclick="go('beauty')" class="red">🔥 Beauty Sale</a></li>
+        </ul></div>
+        <div class="mcol"><div class="mcol-title">Brands</div><ul>
+          <li><a onclick="go('brands')">Calvin Klein</a></li>
+          <li><a onclick="go('brands')">DKNY</a></li>
+          <li><a onclick="go('brands')">Tommy Hilfiger</a></li>
+          <li><a onclick="go('brands')">Ralph Lauren</a></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="nav-item"><a onclick="go('brands')" id="nav-brands">All Brands</a></div>
+    <div class="nav-item nav-sale" style="margin-left:auto"><a onclick="go('home')">🔥 Sale</a></div>
+
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker"><div class="tick-t" id="ticker"></div></div>
+
+<!-- ══ PAGES ══ -->
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="home-hero">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80&auto=format&fit=crop" alt="BBZ">
+    <div class="home-hero-ov"></div>
+    <div class="home-hero-cnt">
+      <div class="hero-tag">🐝 Big Brands · Bigger Savings · GCC's Favourite Brand Store</div>
+      <h1 class="hero-h1">Big Brands.<br><span class="yl">Bigger</span> Savings.</h1>
+      <p class="hero-sub">Tommy Hilfiger, Calvin Klein, Nine West, Reebok & 500+ iconic brands — all up to 80% off, every single day.</p>
+      <div class="hero-cta">
+        <button class="btn-y" onclick="go('women')">Shop Women</button>
+        <button class="btn-ol" onclick="go('men')">Shop Men</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><strong>80%</strong><span>Max Discount</span></div>
+        <div class="hstat"><strong>500+</strong><span>Brands</span></div>
+        <div class="hstat"><strong>28+</strong><span>GCC Stores</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec" style="padding:20px 0;border-bottom:1px solid var(--bdr)"><div class="con"><div class="feat-strip">
+    <div class="feat-card"><div class="feat-ic">🚚</div><div><p>Free Delivery</p><span>On orders above AED 199</span></div></div>
+    <div class="feat-card"><div class="feat-ic">↩️</div><div><p>Easy Returns</p><span>30-day hassle-free returns</span></div></div>
+    <div class="feat-card"><div class="feat-ic">✅</div><div><p>100% Authentic</p><span>Genuine branded products only</span></div></div>
+    <div class="feat-card"><div class="feat-ic">💳</div><div><p>Secure Payment</p><span>Visa, MC, Apple Pay & COD</span></div></div>
+  </div></div></div>
+
+  <div class="sec"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">Shop by <span class="ac">Category</span></div><div class="sec-sub">Your one-stop brand store</div></div></div>
+    <div class="cat-scroll">
+      <div class="cat-tile" onclick="go('women')"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=260&q=80&auto=format&fit=crop" alt="Women"></div><p>Women</p></div>
+      <div class="cat-tile" onclick="go('men')"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=260&q=80&auto=format&fit=crop" alt="Men"></div><p>Men</p></div>
+      <div class="cat-tile" onclick="go('kids')"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1471286174890-9c112ac6a979?w=260&q=80&auto=format&fit=crop" alt="Kids"></div><p>Kids</p></div>
+      <div class="cat-tile" onclick="go('handbags')"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=260&q=80&auto=format&fit=crop" alt="Handbags"></div><p>Handbags</p></div>
+      <div class="cat-tile" onclick="go('footwear')"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=260&q=80&auto=format&fit=crop" alt="Footwear"></div><p>Footwear</p></div>
+      <div class="cat-tile" onclick="go('beauty')"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=260&q=80&auto=format&fit=crop" alt="Beauty"></div><p>Beauty</p></div>
+      <div class="cat-tile" onclick="go('brands')"><div class="cat-tile-img" style="background:var(--blk);border-color:var(--y)"><div style="display:flex;align-items:center;justify-content:center;height:100%;font-family:var(--fc);font-size:22px;font-weight:900;color:var(--y)">500+</div></div><p>All Brands</p></div>
+    </div>
+  </div></div>
+
+  <div class="flash"><div class="flash-w">
+    <div class="flash-lbl"><div class="flash-ttl">⚡ Flash<br>Sale</div><div class="flash-sub">Ends soon</div>
+      <div class="cd">
+        <div class="cd-u"><div class="cd-n" id="cdH">05</div><div class="cd-l">Hrs</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-u"><div class="cd-n" id="cdM">34</div><div class="cd-l">Min</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-u"><div class="cd-n" id="cdS">12</div><div class="cd-l">Sec</div></div>
+      </div>
+    </div>
+    <div class="flash-prods" id="flashGrid"></div>
+  </div></div>
+
+  <div class="sec"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">Trending <span class="ac">This Week</span></div><div class="sec-sub">Most loved by BBZ shoppers right now</div></div><a class="va" onclick="go('women')">View All →</a></div>
+    <div class="prod-grid" id="homeGrid"></div>
+  </div></div>
+
+  <div class="sec sec-alt"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">Promo <span class="ac">Highlights</span></div></div></div>
+    <div class="promo-row">
+      <div class="promo-card" onclick="go('women')">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80&auto=format&fit=crop" alt="Women">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Women's Collection</div><div class="promo-h">Summer Dresses<br>& Tops</div><div class="promo-pct">Up to 70% Off</div></div>
+      </div>
+      <div class="promo-card" onclick="go('men')">
+        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80&auto=format&fit=crop" alt="Men">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Men's Collection</div><div class="promo-h">Shirts, Polos<br>& Jeans</div><div class="promo-pct">Up to 65% Off</div></div>
+      </div>
+    </div>
+    <div class="promo-row" style="margin-top:14px">
+      <div class="promo-card" onclick="go('kids')">
+        <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=800&q=80&auto=format&fit=crop" alt="Kids">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Kids & Baby</div><div class="promo-h">Carter's · Old Navy<br>& More</div><div class="promo-pct">Up to 80% Off</div></div>
+      </div>
+      <div class="promo-card" onclick="go('handbags')">
+        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80&auto=format&fit=crop" alt="Bags">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Handbags</div><div class="promo-h">Calvin Klein · DKNY<br>· Nine West</div><div class="promo-pct">Up to 67% Off</div></div>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- BRAND HERO SECTION -->
+  <div class="brand-hero-sec">
+    <div class="con">
+      <div class="brand-hero-hd">
+        <div class="brand-hero-eyebrow">🐝 500+ Iconic Labels</div>
+        <div class="brand-hero-ttl">Big Brands.<br><span class="yl">Bigger Savings.</span></div>
+        <div class="brand-hero-sub">Tommy Hilfiger. Calvin Klein. Ralph Lauren. Nine West. All at up to 80% off — only at BBZ.</div>
+      </div>
+      <div class="brand-marquee-wrap">
+        <div class="brand-marquee" id="brandMarquee1"></div>
+      </div>
+      <div class="brand-marquee-wrap rev" style="margin-top:0">
+        <div class="brand-marquee" id="brandMarquee2"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="brand-hero-bottom">
+          <div class="bhstat"><strong>500+</strong><span>Brands</span></div>
+          <div class="bhstat-div"></div>
+          <div class="bhstat"><strong>80%</strong><span>Max Off</span></div>
+          <div class="bhstat-div"></div>
+          <div class="bhstat"><strong>28+</strong><span>GCC Stores</span></div>
+          <div class="bhstat-div"></div>
+          <div class="bhstat"><strong>100%</strong><span>Authentic</span></div>
+        </div>
+        <button class="brand-hero-cta" onclick="go('brands')">Explore All Brands →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec sec-alt"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">What <span class="ac">Shoppers Say</span></div></div></div>
+    <div class="rev-grid">
+      <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-txt">"BBZ is my go-to in Dubai. Found a Tommy Hilfiger jacket at 65% off — you simply can't find deals like this anywhere!"</p><div class="rev-auth"><div class="rev-av">SA</div><div><div class="rev-nm">Sara Al Mansouri</div><div class="rev-lc">Dubai, UAE</div></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-txt">"Got my kids' whole school wardrobe from Carter's at incredible prices. Every visit surprises me with new deals!"</p><div class="rev-auth"><div class="rev-av">RK</div><div><div class="rev-nm">Ravi Kumar</div><div class="rev-lc">Sharjah, UAE</div></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-txt">"Delivery was fast and products 100% genuine. Ordered Nine West and Skechers multiple times — always perfect!"</p><div class="rev-auth"><div class="rev-av">FH</div><div><div class="rev-nm">Fatima Hassan</div><div class="rev-lc">Abu Dhabi, UAE</div></div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ══ WOMEN PAGE ══ -->
+<div class="page" id="page-women">
+  <div class="pg-hero">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80&auto=format&fit=crop&crop=top" alt="Women">
+    <div class="pg-ov"></div>
+    <div class="pg-cnt">
+      <div class="pg-tag">Women's Collection — SS 2026</div>
+      <h1 class="pg-h1">Women's <span class="hl">Fashion</span></h1>
+      <p class="pg-sub">Tommy Hilfiger, Nine West, DKNY, Calvin Klein, Ralph Lauren & 100+ brands — up to 75% off.</p>
+      <button class="pg-btn">Shop All Women's</button>
+      <div class="pg-bc"><a onclick="go('home')">Home</a><span>/</span><span style="color:#fff">Women</span></div>
+    </div>
+  </div>
+  <div class="pg-nav"><div class="pg-navw">
+    <a class="pna" onclick="setPN(this)">All</a>
+    <a onclick="setPN(this)">Dresses</a>
+    <a onclick="setPN(this)">Tops</a>
+    <a onclick="setPN(this)">T-Shirts</a>
+    <a onclick="setPN(this)">Jeans</a>
+    <a onclick="setPN(this)">Co-ords</a>
+    <a onclick="setPN(this)">Shoes</a>
+    <a onclick="setPN(this)">Bags</a>
+    <a class="pna-red" onclick="setPN(this)">🏷️ Clearance</a>
+  </div></div>
+
+  <div class="sec"><div class="con">
+    <!-- SHOP BY CATEGORY (women-specific circular tiles) -->
+    <div class="sec-hd"><div><div class="sec-ttl">Shop by <span class="ac">Category</span></div><div class="sec-sub">Explore what's trending for women</div></div></div>
+    <div class="cat-scroll">
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=260&q=80&auto=format&fit=crop" alt="Dresses"></div><p>Dresses</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=260&q=80&auto=format&fit=crop" alt="Tops"></div><p>Tops</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=260&q=80&auto=format&fit=crop" alt="T-Shirts"></div><p>T-Shirts</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1475178626620-a4d074967452?w=260&q=80&auto=format&fit=crop" alt="Jeans"></div><p>Jeans</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=260&q=80&auto=format&fit=crop" alt="Shoes"></div><p>Shoes</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=260&q=80&auto=format&fit=crop" alt="Bags"></div><p>Bags</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=260&q=80&auto=format&fit=crop" alt="Co-ords"></div><p>Co-ord Sets</p></div>
+    </div>
+
+    <!-- BRAND HIGHLIGHTS (women) -->
+    <div style="margin-top:36px"></div>
+    <div class="sec-hd"><div><div class="sec-ttl">Women's <span class="ac">Brands</span></div><div class="sec-sub">Iconic labels. Unbeatable prices.</div></div><a class="va" onclick="go('brands')">All Brands →</a></div>
+    <div class="brand-showcase">
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#003580,#e8271c)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.6)">Premium Fashion</div><div class="bs-card-name" style="color:#fff">Tommy Hilfiger</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 70% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#111,#444)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Minimalist Luxury</div><div class="bs-card-name" style="color:#fff">Calvin Klein</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 67% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#1a1a6e,#5c5ccc)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">NYC Style</div><div class="bs-card-name" style="color:#fff">DKNY</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 66% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#7b0000,#cc2200)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Footwear & Bags</div><div class="bs-card-name" style="color:#fff">Nine West</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 68% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#004400,#006400)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Iconic American</div><div class="bs-card-name" style="color:#fff">Ralph Lauren</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 68% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#2c2c2c,#666)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Comfort & Style</div><div class="bs-card-name" style="color:#fff">Naturalizer</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 65% Off</div></div>
+      </div>
+    </div>
+
+    <!-- DRESSES -->
+    <div class="sdiv" style="margin-top:40px"><div class="sdiv-line"></div><h3>👗 <span>Dresses</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">New In</div></div>
+    <div class="prod-grid" id="wDresses"></div>
+
+    <!-- TOPS -->
+    <div class="sdiv"><div class="sdiv-line"></div><h3>🧥 <span>Tops & Blouses</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Best Sellers</div></div>
+    <div class="prod-grid" id="wTops"></div>
+
+    <!-- T-SHIRTS -->
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👚 <span>T-Shirts</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Up to 68% Off</div></div>
+    <div class="prod-grid" id="wTees"></div>
+
+    <!-- SHOES -->
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👠 <span>Shoes</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Step Up</div></div>
+    <div class="prod-grid" id="wShoes"></div>
+
+    <!-- BAGS -->
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👜 <span>Bags</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Trending Now</div></div>
+    <div class="prod-grid" id="wBags"></div>
+
+  </div></div>
+
+  <!-- WOMEN COLLECTIONS PROMO -->
+  <div class="sec sec-alt"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">Women's <span class="ac">Collections</span></div><div class="sec-sub">Curated edits for every occasion</div></div></div>
+    <div class="promo-row">
+      <div class="promo-card" onclick="go('women')">
+        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&q=80&auto=format&fit=crop" alt="Summer">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Summer Edit</div><div class="promo-h">Holiday-Ready<br>Dresses</div><div class="promo-pct">From AED 79</div></div>
+      </div>
+      <div class="promo-card" onclick="go('women')">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&auto=format&fit=crop" alt="Workwear">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Work to Weekend</div><div class="promo-h">Smart Casual<br>Collection</div><div class="promo-pct">Up to 70% Off</div></div>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- WOMEN CLEARANCE BANNER -->
+  <div class="deal-bar"><div class="deal-bar-inner">
+    <div style="font-size:40px;flex-shrink:0">🏷️</div>
+    <div class="deal-bar-txt"><h3>Women's Clearance — Up to 85% Off</h3><p>End-of-season liquidation on Tommy Hilfiger, DKNY, Nine West & more. Final stock — once gone, it's gone!</p></div>
+    <div class="deal-chips">
+      <div class="deal-chip"><strong>85%</strong><span>Dresses</span></div>
+      <div class="deal-chip"><strong>82%</strong><span>Tops</span></div>
+      <div class="deal-chip"><strong>80%</strong><span>Shoes</span></div>
+      <div class="deal-chip"><strong>84%</strong><span>Bags</span></div>
+    </div>
+    <button class="deal-bar-btn">Shop Clearance</button>
+  </div></div>
+  <div class="clr-section"><div class="con">
+    <div class="sdiv"><div class="sdiv-line" style="background:#f8b4b4"></div><h3>🏷️ <span>Clearance — Final Prices</span></h3><div class="sdiv-line" style="background:#f8b4b4"></div><div class="sdiv-pill" style="background:#c0392b;color:#fff">Up to 85% Off</div></div>
+    <div class="prod-grid" id="wClearance"></div>
+  </div></div>
+
+  <div class="sec"><div class="con">
+    <div class="sdiv"><div class="sdiv-line"></div><h3>🔥 <span>Sale</span> Picks</h3><div class="sdiv-line"></div><div class="sdiv-pill">Discounted Now</div></div>
+    <div class="prod-grid" id="wSale"></div>
+  </div></div>
+</div>
+
+<!-- ══ MEN PAGE ══ -->
+<div class="page" id="page-men">
+  <div class="pg-hero">
+    <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=1600&q=80&auto=format&fit=crop&crop=top" alt="Men">
+    <div class="pg-ov"></div>
+    <div class="pg-cnt">
+      <div class="pg-tag">Men's Collection — SS 2026</div>
+      <h1 class="pg-h1">Men's <span class="hl">Fashion</span></h1>
+      <p class="pg-sub">Tommy Hilfiger, Ralph Lauren, Levi's, Jack & Jones, Reebok & 80+ brands — up to 65% off.</p>
+      <button class="pg-btn">Shop All Men's</button>
+      <div class="pg-bc"><a onclick="go('home')">Home</a><span>/</span><span style="color:#fff">Men</span></div>
+    </div>
+  </div>
+  <div class="pg-nav"><div class="pg-navw">
+    <a class="pna" onclick="setPN(this)">All</a>
+    <a onclick="setPN(this)">Shirts</a>
+    <a onclick="setPN(this)">Polos</a>
+    <a onclick="setPN(this)">T-Shirts</a>
+    <a onclick="setPN(this)">Jeans</a>
+    <a onclick="setPN(this)">Activewear</a>
+    <a onclick="setPN(this)">Shoes</a>
+    <a onclick="setPN(this)">Bags</a>
+    <a class="pna-red" onclick="setPN(this)">🏷️ Clearance</a>
+  </div></div>
+
+  <div class="sec"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">Shop by <span class="ac">Category</span></div><div class="sec-sub">Everything a man needs, all in one place</div></div></div>
+    <div class="cat-scroll">
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=260&q=80&auto=format&fit=crop" alt="Shirts"></div><p>Shirts</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=260&q=80&auto=format&fit=crop" alt="Polos"></div><p>Polos</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=260&q=80&auto=format&fit=crop" alt="T-Shirts"></div><p>T-Shirts</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=260&q=80&auto=format&fit=crop" alt="Jeans"></div><p>Jeans</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=260&q=80&auto=format&fit=crop" alt="Shoes"></div><p>Shoes</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?w=260&q=80&auto=format&fit=crop" alt="Bags"></div><p>Bags</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1483721310020-03333e577078?w=260&q=80&auto=format&fit=crop" alt="Activewear"></div><p>Activewear</p></div>
+    </div>
+
+    <div style="margin-top:36px"></div>
+    <div class="sec-hd"><div><div class="sec-ttl">Men's <span class="ac">Brands</span></div><div class="sec-sub">Iconic labels. Unbeatable prices.</div></div><a class="va" onclick="go('brands')">All Brands →</a></div>
+    <div class="brand-showcase">
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#003580,#e8271c)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.6)">Classic American</div><div class="bs-card-name" style="color:#fff">Tommy Hilfiger</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 70% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#4a1942,#8b3d82)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Polo Heritage</div><div class="bs-card-name" style="color:#fff">Ralph Lauren</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 68% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#8b0000,#cc1a00)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Denim Icons</div><div class="bs-card-name" style="color:#fff">Levi's</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 72% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#002366,#1a4499)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Urban Casual</div><div class="bs-card-name" style="color:#fff">Jack & Jones</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 65% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#990000,#cc0000)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Sport & Street</div><div class="bs-card-name" style="color:#fff">Reebok</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 66% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#111,#333)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,208,0,.7)">Performance</div><div class="bs-card-name" style="color:var(--y)">PUMA</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 65% Off</div></div>
+      </div>
+    </div>
+
+    <div class="sdiv" style="margin-top:40px"><div class="sdiv-line"></div><h3>👔 <span>Shirts</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">New In</div></div>
+    <div class="prod-grid" id="mShirts"></div>
+
+    <div class="sdiv"><div class="sdiv-line"></div><h3>🧶 <span>Polos</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Best Sellers</div></div>
+    <div class="prod-grid" id="mPolos"></div>
+
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👕 <span>T-Shirts</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Up to 68% Off</div></div>
+    <div class="prod-grid" id="mTees"></div>
+
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👖 <span>Jeans & Trousers</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">New Arrivals</div></div>
+    <div class="prod-grid" id="mJeans"></div>
+
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👟 <span>Shoes</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Step Up</div></div>
+    <div class="prod-grid" id="mShoes"></div>
+  </div></div>
+
+  <div class="sec sec-alt"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">Men's <span class="ac">Collections</span></div></div></div>
+    <div class="promo-row">
+      <div class="promo-card" onclick="go('men')">
+        <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=800&q=80&auto=format&fit=crop" alt="Shirts">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Shirt Edit</div><div class="promo-h">Office to<br>Weekend</div><div class="promo-pct">From AED 59</div></div>
+      </div>
+      <div class="promo-card" onclick="go('men')">
+        <img src="https://images.unsplash.com/photo-1583743814966-8d4f4ebe40b4?w=800&q=80&auto=format&fit=crop" alt="Active">
+        <div class="promo-ov"></div>
+        <div class="promo-cnt"><div class="promo-tag">Activewear</div><div class="promo-h">Train in<br>Style</div><div class="promo-pct">Up to 65% Off</div></div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="deal-bar"><div class="deal-bar-inner">
+    <div style="font-size:40px;flex-shrink:0">🏷️</div>
+    <div class="deal-bar-txt"><h3>Men's Clearance — Up to 86% Off</h3><p>Clearance on Tommy Hilfiger shirts, Levi's jeans, Reebok shoes & more. These prices won't last!</p></div>
+    <div class="deal-chips">
+      <div class="deal-chip"><strong>86%</strong><span>Shirts</span></div>
+      <div class="deal-chip"><strong>85%</strong><span>Jeans</span></div>
+      <div class="deal-chip"><strong>83%</strong><span>Shoes</span></div>
+    </div>
+    <button class="deal-bar-btn">Shop Men's Clearance</button>
+  </div></div>
+  <div class="clr-section"><div class="con">
+    <div class="sdiv"><div class="sdiv-line" style="background:#f8b4b4"></div><h3>🏷️ <span>Men's Clearance</span></h3><div class="sdiv-line" style="background:#f8b4b4"></div><div class="sdiv-pill" style="background:#c0392b;color:#fff">Up to 86% Off</div></div>
+    <div class="prod-grid" id="mClearance"></div>
+  </div></div>
+</div>
+
+<!-- ══ KIDS PAGE ══ -->
+<div class="page" id="page-kids">
+  <div class="pg-hero">
+    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=1600&q=80&auto=format&fit=crop&crop=center" alt="Kids">
+    <div class="pg-ov"></div>
+    <div class="pg-cnt">
+      <div class="pg-tag">Kids & Baby — SS 2026</div>
+      <h1 class="pg-h1">Kids & <span class="hl">Baby</span></h1>
+      <p class="pg-sub">Carter's, Old Navy, Reebok Kids, Puma Kids & more — big brands for little ones at up to 80% off.</p>
+      <button class="pg-btn">Shop All Kids</button>
+      <div class="pg-bc"><a onclick="go('home')">Home</a><span>/</span><span style="color:#fff">Kids</span></div>
+    </div>
+  </div>
+  <div class="pg-nav"><div class="pg-navw">
+    <a class="pna" onclick="setPN(this)">All Kids</a>
+    <a onclick="setPN(this)">Baby (0–12M)</a>
+    <a onclick="setPN(this)">Toddler (1–3 Yrs)</a>
+    <a onclick="setPN(this)">Little Kids (3–6)</a>
+    <a onclick="setPN(this)">Girls (6–14)</a>
+    <a onclick="setPN(this)">Boys (6–14)</a>
+    <a onclick="setPN(this)">Shoes</a>
+    <a class="pna-red" onclick="setPN(this)">🏷️ Clearance</a>
+  </div></div>
+
+  <div class="sec"><div class="con">
+    <div class="sec-hd"><div><div class="sec-ttl">Shop by <span class="ac">Age Group</span></div><div class="sec-sub">Find the perfect fit for every little one</div></div></div>
+    <div class="cat-scroll">
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=260&q=80&auto=format&fit=crop" alt="Baby"></div><p>Baby 0–12M</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?w=260&q=80&auto=format&fit=crop" alt="Toddler"></div><p>Toddler 1–3</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=260&q=80&auto=format&fit=crop" alt="Girls"></div><p>Girls 3–14</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=260&q=80&auto=format&fit=crop" alt="Boys"></div><p>Boys 3–14</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=260&q=80&auto=format&fit=crop" alt="Shoes"></div><p>Kids Shoes</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=260&q=80&auto=format&fit=crop" alt="Accessories"></div><p>Accessories</p></div>
+    </div>
+
+    <!-- KIDS BRANDS -->
+    <div style="margin-top:36px"></div>
+    <div class="sec-hd"><div><div class="sec-ttl">Kids' <span class="ac">Brands</span></div><div class="sec-sub">The labels they love, at prices you'll love more</div></div><a class="va" onclick="go('brands')">All Brands →</a></div>
+    <div class="brand-showcase">
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#e05a00,#ff8c00)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.7)">Baby & Kids</div><div class="bs-card-name" style="color:#fff">Carter's</div><div class="bs-card-pill" style="background:#fff;color:#e05a00">Up to 78% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#004a99,#0066cc)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.6)">Family Fashion</div><div class="bs-card-name" style="color:#fff">Old Navy</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 75% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#990000,#cc0000)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.6)">Junior Sport</div><div class="bs-card-name" style="color:#fff">Reebok Kids</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 66% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#111,#333)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,208,0,.8)">Junior Sport</div><div class="bs-card-name" style="color:var(--y)">PUMA Kids</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 65% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#b05a00,#cc7722)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.6)">Graphic Tees & More</div><div class="bs-card-name" style="color:#fff">Aeropostale</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 70% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(135deg,#1a5e20,#2e8b57)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.6)">Comfy Classics</div><div class="bs-card-name" style="color:#fff">Skechers Kids</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 58% Off</div></div>
+      </div>
+    </div>
+
+    <div class="sdiv" style="margin-top:40px"><div class="sdiv-line"></div><h3>🍼 <span>Baby & Toddler</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">0–3 Years</div></div>
+    <div class="prod-grid" id="kBaby"></div>
+
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👧 <span>Girls</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">3–14 Years</div></div>
+    <div class="prod-grid" id="kGirls"></div>
+
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👦 <span>Boys</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">3–14 Years</div></div>
+    <div class="prod-grid" id="kBoys"></div>
+
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👟 <span>Kids' Shoes</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">All Ages</div></div>
+    <div class="prod-grid" id="kShoes"></div>
+  </div></div>
+
+  <div class="deal-bar"><div class="deal-bar-inner">
+    <div style="font-size:40px;flex-shrink:0">🏷️</div>
+    <div class="deal-bar-txt"><h3>Kids Clearance — Up to 88% Off</h3><p>Season-end clearance on Carter's, Old Navy, Reebok Kids. Tiny prices on big brands!</p></div>
+    <div class="deal-chips">
+      <div class="deal-chip"><strong>88%</strong><span>Girls</span></div>
+      <div class="deal-chip"><strong>87%</strong><span>Boys</span></div>
+      <div class="deal-chip"><strong>86%</strong><span>Baby</span></div>
+    </div>
+    <button class="deal-bar-btn">Shop Kids Clearance</button>
+  </div></div>
+  <div class="clr-section"><div class="con">
+    <div class="sdiv"><div class="sdiv-line" style="background:#f8b4b4"></div><h3>🏷️ <span>Kids Clearance</span></h3><div class="sdiv-line" style="background:#f8b4b4"></div><div class="sdiv-pill" style="background:#c0392b;color:#fff">Up to 88% Off</div></div>
+    <div class="prod-grid" id="kClearance"></div>
+  </div></div>
+</div>
+
+<!-- ══ HANDBAGS PAGE ══ -->
+<div class="page" id="page-handbags">
+  <div class="pg-hero">
+    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1600&q=80&auto=format&fit=crop&crop=center" alt="Handbags">
+    <div class="pg-ov"></div>
+    <div class="pg-cnt">
+      <div class="pg-tag">Handbags & Accessories</div>
+      <h1 class="pg-h1">Designer <span class="hl">Bags</span></h1>
+      <p class="pg-sub">Michael Kors, DKNY, Steve Madden, Anne Klein, Jessica Simpson, Kenneth Cole & Nine West — designer bags at up to 70% off.</p>
+      <button class="pg-btn">Shop All Bags</button>
+      <div class="pg-bc"><a onclick="go('home')">Home</a><span>/</span><span style="color:#fff">Handbags</span></div>
+    </div>
+  </div>
+  <div class="pg-nav"><div class="pg-navw">
+    <a class="pna" onclick="setPN(this)">All Bags</a>
+    <a onclick="setPN(this)">Tote Bags</a>
+    <a onclick="setPN(this)">Crossbody</a>
+    <a onclick="setPN(this)">Shoulder Bags</a>
+    <a onclick="setPN(this)">Clutches</a>
+    <a onclick="setPN(this)">Mini Bags</a>
+    <a onclick="setPN(this)">Backpacks</a>
+    <a class="pna-red" onclick="setPN(this)">🏷️ Clearance</a>
+  </div></div>
+
+  <div class="sec"><div class="con">
+
+    <!-- BRAND DOMINANCE -->
+    <div class="sec-hd"><div><div class="sec-ttl">Bag <span class="ac">Brands</span></div><div class="sec-sub">The world's most coveted labels — authenticated &amp; priced only at BBZ</div></div><a class="va" onclick="go('brands')">All Brands →</a></div>
+    <div class="brand-showcase" style="grid-template-columns:repeat(4,1fr)">
+      <div class="bs-card" onclick="go('handbags')" style="background:linear-gradient(150deg,#b8860b,#8b6914)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">New York Luxury</div><div class="bs-card-name" style="color:#fff">Michael Kors</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 68% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('handbags')" style="background:linear-gradient(150deg,#1a1a6e,#2d2d9e)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">NYC Urban Edge</div><div class="bs-card-name" style="color:#fff">DKNY</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 66% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('handbags')" style="background:linear-gradient(150deg,#111,#3a3a3a)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">Street to Chic</div><div class="bs-card-name" style="color:#fff">Steve Madden</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 65% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('handbags')" style="background:linear-gradient(150deg,#003366,#0055aa)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">Timeless Classics</div><div class="bs-card-name" style="color:#fff">Anne Klein</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 67% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('handbags')" style="background:linear-gradient(150deg,#7b1fa2,#ab47bc)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">Fun & Feminine</div><div class="bs-card-name" style="color:#fff">Jessica Simpson</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 70% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('handbags')" style="background:linear-gradient(150deg,#1b4332,#2d6a4f)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">Modern Executive</div><div class="bs-card-name" style="color:#fff">Kenneth Cole</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 65% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('handbags')" style="background:linear-gradient(150deg,#6b0f0f,#a01515)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">Classic Chic</div><div class="bs-card-name" style="color:#fff">Nine West</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 68% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(150deg,#222,#444);border:2px dashed rgba(255,208,0,.3)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,208,0,.6)">Explore More</div><div class="bs-card-name" style="color:var(--y)">+ More Brands</div><div class="bs-card-pill" style="background:rgba(255,208,0,.15);color:var(--y)">View All →</div></div>
+      </div>
+    </div>
+
+    <!-- CREDIBILITY STRIP -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px">
+      <div class="feat-card"><div class="feat-ic">✅</div><div><p>100% Authentic</p><span>Every bag verified genuine</span></div></div>
+      <div class="feat-card"><div class="feat-ic">💰</div><div><p>Up to 70% Off</p><span>Vs. boutique retail price</span></div></div>
+      <div class="feat-card"><div class="feat-ic">👜</div><div><p>200+ Styles</p><span>Totes, crossbody &amp; clutches</span></div></div>
+      <div class="feat-card"><div class="feat-ic">🏆</div><div><p>7 Designer Brands</p><span>MK · DKNY · SM · AK · JS · KC · NW</span></div></div>
+    </div>
+
+    <!-- SHOP BY TYPE -->
+    <div class="sec-hd" style="margin-top:40px"><div><div class="sec-ttl">Shop by <span class="ac">Bag Type</span></div></div></div>
+    <div class="cat-scroll">
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=260&q=80&auto=format&fit=crop" alt="Totes"></div><p>Tote Bags</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=260&q=80&auto=format&fit=crop" alt="Crossbody"></div><p>Crossbody</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=260&q=80&auto=format&fit=crop" alt="Shoulder"></div><p>Shoulder</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1590739225287-bd31519780c3?w=260&q=80&auto=format&fit=crop" alt="Clutches"></div><p>Clutches</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=260&q=80&auto=format&fit=crop" alt="Mini"></div><p>Mini Bags</p></div>
+      <div class="cat-tile"><div class="cat-tile-img"><img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?w=260&q=80&auto=format&fit=crop" alt="Backpacks"></div><p>Backpacks</p></div>
+    </div>
+
+    <div class="sdiv" style="margin-top:40px"><div class="sdiv-line"></div><h3>🛍️ <span>Tote Bags</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Everyday Carry</div></div>
+    <div class="prod-grid" id="hbTotes"></div>
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👜 <span>Crossbody Bags</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Trending</div></div>
+    <div class="prod-grid" id="hbCross"></div>
+    <div class="sdiv"><div class="sdiv-line"></div><h3>💼 <span>Clutches & Evening Bags</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Night Out</div></div>
+    <div class="prod-grid" id="hbClutch"></div>
+  </div></div>
+
+  <div class="deal-bar"><div class="deal-bar-inner">
+    <div style="font-size:40px;flex-shrink:0">🏷️</div>
+    <div class="deal-bar-txt"><h3>Bag Clearance — Up to 87% Off</h3><p>Final stock on Calvin Klein, DKNY, Nine West. No restock — grab yours now!</p></div>
+    <div class="deal-chips">
+      <div class="deal-chip"><strong>87%</strong><span>Totes</span></div>
+      <div class="deal-chip"><strong>85%</strong><span>Crossbody</span></div>
+      <div class="deal-chip"><strong>88%</strong><span>Clutches</span></div>
+    </div>
+    <button class="deal-bar-btn">Shop Bag Clearance</button>
+  </div></div>
+  <div class="clr-section"><div class="con">
+    <div class="sdiv"><div class="sdiv-line" style="background:#f8b4b4"></div><h3>🏷️ <span>Bag Clearance</span></h3><div class="sdiv-line" style="background:#f8b4b4"></div><div class="sdiv-pill" style="background:#c0392b;color:#fff">Final Stock</div></div>
+    <div class="prod-grid" id="hbClearance"></div>
+  </div></div>
+</div>
+
+<!-- ══ FOOTWEAR PAGE ══ -->
+<div class="page" id="page-footwear">
+  <div class="pg-hero">
+    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=1600&q=80&auto=format&fit=crop&crop=center" alt="Footwear">
+    <div class="pg-ov"></div>
+    <div class="pg-cnt">
+      <div class="pg-tag">Footwear — SS 2026</div>
+      <h1 class="pg-h1">Footwear <span class="hl">for All</span></h1>
+      <p class="pg-sub">Reebok, Skechers, Nine West, Naturalizer, Clarks, Ecco & Crocs — top brands at up to 65% off for women, men & kids.</p>
+      <button class="pg-btn">Shop All Footwear</button>
+      <div class="pg-bc"><a onclick="go('home')">Home</a><span>/</span><span style="color:#fff">Footwear</span></div>
+    </div>
+  </div>
+  <div class="pg-nav"><div class="pg-navw">
+    <a class="pna" onclick="setPN(this)">All Footwear</a>
+    <a onclick="setPN(this)">Women's</a>
+    <a onclick="setPN(this)">Men's</a>
+    <a onclick="setPN(this)">Kids'</a>
+    <a onclick="setPN(this)">Sneakers</a>
+    <a onclick="setPN(this)">Heels</a>
+    <a onclick="setPN(this)">Sports</a>
+    <a class="pna-red" onclick="setPN(this)">🏷️ Clearance</a>
+  </div></div>
+
+  <div class="sec"><div class="con">
+
+    <!-- FOOTWEAR BRAND DOMINANCE -->
+    <div class="sec-hd"><div><div class="sec-ttl">Footwear <span class="ac">Brands</span></div><div class="sec-sub">The biggest names in comfort, sport &amp; style — all at BBZ prices</div></div><a class="va" onclick="go('brands')">All Brands →</a></div>
+    <div class="brand-showcase" style="grid-template-columns:repeat(4,1fr)">
+      <div class="bs-card" onclick="go('footwear')" style="background:linear-gradient(150deg,#cc0000,#ee0000)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Sport & Street</div><div class="bs-card-name" style="color:#fff">Reebok</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 66% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('footwear')" style="background:linear-gradient(150deg,#003366,#0055aa)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Comfort Innovation</div><div class="bs-card-name" style="color:#fff">Skechers</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 58% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('footwear')" style="background:linear-gradient(150deg,#6b0f0f,#a01515)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">Heels & Flats</div><div class="bs-card-name" style="color:#fff">Nine West</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 68% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('footwear')" style="background:linear-gradient(150deg,#2c2c2c,#505050)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">All-Day Comfort</div><div class="bs-card-name" style="color:#fff">Naturalizer</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 65% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('footwear')" style="background:linear-gradient(150deg,#1b3a1b,#2d5a2d)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">British Heritage</div><div class="bs-card-name" style="color:#fff">Clarks</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 62% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('footwear')" style="background:linear-gradient(150deg,#4a3000,#7a5200)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.45)">Premium European</div><div class="bs-card-name" style="color:#fff">Ecco</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 60% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('footwear')" style="background:linear-gradient(150deg,#004d99,#0070cc)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,255,255,.5)">Fun for All Ages</div><div class="bs-card-name" style="color:#fff">Crocs</div><div class="bs-card-pill" style="background:var(--y);color:var(--blk)">Up to 55% Off</div></div>
+      </div>
+      <div class="bs-card" onclick="go('brands')" style="background:linear-gradient(150deg,#222,#444);border:2px dashed rgba(255,208,0,.3)">
+        <div class="bs-card-cnt"><div class="bs-card-label" style="color:rgba(255,208,0,.6)">Explore More</div><div class="bs-card-name" style="color:var(--y)">+ More Brands</div><div class="bs-card-pill" style="background:rgba(255,208,0,.15);color:var(--y)">View All →</div></div>
+      </div>
+    </div>
+
+    <!-- CREDIBILITY STRIP -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px">
+      <div class="feat-card"><div class="feat-ic">✅</div><div><p>100% Authentic</p><span>All footwear brand verified</span></div></div>
+      <div class="feat-card"><div class="feat-ic">💰</div><div><p>Up to 68% Off</p><span>Vs. original retail price</span></div></div>
+      <div class="feat-card"><div class="feat-ic">👟</div><div><p>250+ Styles</p><span>Women · Men · Kids</span></div></div>
+      <div class="feat-card"><div class="feat-ic">🏆</div><div><p>7 Top Brands</p><span>Reebok · Skechers · Clarks · Ecco+</span></div></div>
+    </div>
+
+    <div class="sdiv" style="margin-top:40px"><div class="sdiv-line"></div><h3>👠 <span>Women's Footwear</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Heels · Flats · Sneakers</div></div>
+    <div class="prod-grid" id="fwWomen"></div>
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👟 <span>Men's Footwear</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Sneakers · Formals · Boots</div></div>
+    <div class="prod-grid" id="fwMen"></div>
+    <div class="sdiv"><div class="sdiv-line"></div><h3>👦 <span>Kids' Footwear</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Light-Up · Sports · School</div></div>
+    <div class="prod-grid" id="fwKids"></div>
+  </div></div>
+
+  <div class="deal-bar"><div class="deal-bar-inner">
+    <div style="font-size:40px;flex-shrink:0">🏷️</div>
+    <div class="deal-bar-txt"><h3>Footwear Clearance — Up to 85% Off</h3><p>Season-end sell-off on Reebok, Skechers, Clarks, Nine West & more. Genuine brands, massive savings!</p></div>
+    <div class="deal-chips">
+      <div class="deal-chip"><strong>85%</strong><span>Women's</span></div>
+      <div class="deal-chip"><strong>83%</strong><span>Men's</span></div>
+      <div class="deal-chip"><strong>82%</strong><span>Kids'</span></div>
+    </div>
+    <button class="deal-bar-btn">Shop Footwear Clearance</button>
+  </div></div>
+  <div class="clr-section"><div class="con">
+    <div class="sdiv"><div class="sdiv-line" style="background:#f8b4b4"></div><h3>🏷️ <span>Footwear Clearance</span></h3><div class="sdiv-line" style="background:#f8b4b4"></div><div class="sdiv-pill" style="background:#c0392b;color:#fff">Final Stock</div></div>
+    <div class="prod-grid" id="fwClearance"></div>
+  </div></div>
+</div>
+
+<!-- ══ BEAUTY PAGE ══ -->
+<div class="page" id="page-beauty">
+  <div class="pg-hero">
+    <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=1600&q=80&auto=format&fit=crop&crop=top" alt="Beauty">
+    <div class="pg-ov"></div>
+    <div class="pg-cnt">
+      <div class="pg-tag">Beauty & Fragrance</div>
+      <h1 class="pg-h1">Beauty & <span class="hl">Fragrance</span></h1>
+      <p class="pg-sub">Calvin Klein, DKNY, Tommy Hilfiger & global beauty brands — premium fragrances, skincare & more at up to 60% off.</p>
+      <button class="pg-btn">Shop All Beauty</button>
+      <div class="pg-bc"><a onclick="go('home')">Home</a><span>/</span><span style="color:#fff">Beauty</span></div>
+    </div>
+  </div>
+  <div class="pg-nav"><div class="pg-navw">
+    <a class="pna" onclick="setPN(this)">All Beauty</a>
+    <a onclick="setPN(this)">Fragrances</a>
+    <a onclick="setPN(this)">Skincare</a>
+    <a onclick="setPN(this)">Makeup</a>
+    <a onclick="setPN(this)">Bath & Body</a>
+  </div></div>
+  <div class="sec"><div class="con">
+    <div class="sdiv"><div class="sdiv-line"></div><h3>🌸 <span>Fragrances</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Bestselling Scents</div></div>
+    <div class="prod-grid" id="btFragrance"></div>
+    <div class="sdiv"><div class="sdiv-line"></div><h3>✨ <span>Skincare & Makeup</span></h3><div class="sdiv-line"></div><div class="sdiv-pill">Glow Up</div></div>
+    <div class="prod-grid" id="btSkin"></div>
+  </div></div>
+</div>
+
+<!-- ══ BRANDS PAGE ══ -->
+<div class="page" id="page-brands">
+  <div style="background:var(--blk);padding:48px 0">
+    <div class="con">
+      <div style="color:var(--y);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">All Brands</div>
+      <div style="font-family:var(--fc);font-weight:900;font-size:clamp(36px,6vw,64px);color:#fff;text-transform:uppercase;line-height:1;margin-bottom:6px">Shop by <span style="color:var(--y)">Brand</span></div>
+      <div style="font-size:13px;color:#777">500+ iconic international brands — all at unbeatable BBZ prices</div>
+    </div>
+  </div>
+  <div class="sec"><div class="con">
+    <div class="brand-wall" id="brandsGrid"></div>
+  </div></div>
+</div>
+
+<!-- NEWSLETTER + FOOTER (always visible) -->
+<div class="nl"><div class="nl-i">
+  <h2>🐝 Catch the Buzz First</h2>
+  <p>Subscribe for flash sales, new arrivals & exclusive BBZ deals.</p>
+  <div class="nl-form"><input type="email" id="nlEmail" placeholder="Your email address"><button onclick="subscribe()">Subscribe</button></div>
+</div></div>
+
+<footer>
+  <div class="ftr-g">
+    <div class="ftr-brand">
+      <div class="ftr-logo"><div class="bee">🐝</div>BBZ</div>
+      <p>GCC's favourite brand store — big international brands at bigger savings. Part of Apparel Group, Dubai — 28+ stores across UAE, KSA, Qatar & Kuwait.</p>
+      <div class="soc-row"><a class="soc">f</a><a class="soc">in</a><a class="soc">📸</a><a class="soc">X</a></div>
+    </div>
+    <div class="ftr-col"><h4>Shop</h4><ul>
+      <li><a onclick="go('women')">Women's Fashion</a></li>
+      <li><a onclick="go('men')">Men's Wear</a></li>
+      <li><a onclick="go('kids')">Kids & Baby</a></li>
+      <li><a onclick="go('handbags')">Handbags</a></li>
+      <li><a onclick="go('footwear')">Footwear</a></li>
+      <li><a onclick="go('beauty')">Beauty & Fragrance</a></li>
+    </ul></div>
+    <div class="ftr-col"><h4>Help</h4><ul>
+      <li><a>My Account</a></li><li><a>Track My Order</a></li>
+      <li><a>Returns & Exchanges</a></li><li><a>Delivery Info</a></li>
+      <li><a>Size Guide</a></li><li><a>FAQs</a></li>
+    </ul></div>
+    <div class="ftr-col"><h4>Company</h4><ul>
+      <li><a>About BBZ</a></li><li><a>Apparel Group</a></li>
+      <li><a>Store Locator</a></li><li><a>Careers</a></li>
+      <li><a>Sustainability</a></li>
+    </ul></div>
+    <div class="ftr-col"><h4>Contact</h4><ul>
+      <li><a>📍 28+ GCC Stores</a></li>
+      <li><a>📞 800-BBZ-UAE</a></li>
+      <li><a>✉ <span class="__cf_email__" data-cfemail="4129242d2d2e0123233b6f2024">[email&#160;protected]</span></a></li>
+      <li><a>💬 WhatsApp Support</a></li>
+    </ul>
+    <div style="margin-top:16px"><h4>Countries</h4><ul>
+      <li><a>🇦🇪 UAE</a></li><li><a>🇸🇦 Saudi Arabia</a></li>
+      <li><a>🇶🇦 Qatar</a></li><li><a>🇰🇼 Kuwait</a></li>
+    </ul></div></div>
+  </div>
+  <div class="ftr-btm">
+    <p>© 2026 BBZ — Apparel Group Dubai. All rights reserved.</p>
+    <div class="pay-row"><div class="pay">VISA</div><div class="pay">MC</div><div class="pay">AMEX</div><div class="pay">Apple Pay</div><div class="pay">COD</div></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-ov" id="cartOv" onclick="closeCart()"></div>
+<div class="cart-drw" id="cartDrw">
+  <div class="cart-hd"><h3>🛒 Your Cart</h3><button class="cart-cls" onclick="closeCart()">✕</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-ftr">
+    <div class="cart-tot"><span>Total</span><strong id="cartTotal">AED 0</strong></div>
+    <button class="cart-chk" onclick="checkout()">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── IMAGE HELPER ──────────────────────────────────────────────
+// Only verified, reliable Unsplash photo IDs used below
+const U = (id, w=400) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+const FB = U('1558618666-fcd25c85cd64'); // fallback image
+
+// ── VERIFIED PHOTO IDs ──────────────────────────────────────
+// WOMEN — all confirmed women's fashion photos
+const WI = {
+  d1: '1496747611176-843222e1e57c', // woman floral dress
+  d2: '1539008835657-9e8e9680c956', // woman midi dress
+  d3: '1485462537746-965f33f7f6a7', // woman white dress
+  d4: '1572804013309-59a88b7e92f1', // woman summer dress
+  t1: '1434389677669-e08b4cac3105', // woman blouse
+  t2: '1515886657613-9f3515b0c78f', // woman casual top
+  t3: '1509631179647-0177331693ae', // woman puff sleeve
+  t4: '1488426862026-3ee34a7d66ef', // woman striped top
+  te1:'1503342217505-b0a15ec3261c', // woman white tee
+  te2:'1554568218-0f1715e72254',    // woman pink tee
+  te3:'1574180566232-aaad1b5b8450', // woman plain tee
+  te4:'1581044777550-4cfa60707c03', // woman active tee
+  s1: '1543163521-1bf539c55dd2',    // women's heels/boots
+  s2: '1515347850090-8a39f2c5e2e4', // women's sandals
+  s3: '1512374382149-233c42b6a83b', // women's sneakers
+  s4: '1549298916-b41d501d3772',    // women's shoes product
+  b1: '1548036328-c9fa89d128fa',    // handbag tote
+  b2: '1553062407-98eeb64c6a62',    // crossbody bag
+  b3: '1584917865442-de89df76afd3', // structured bag
+  b4: '1590739225287-bd31519780c3', // shoulder bag
+};
+// MEN — all confirmed men's fashion photos
+const MI = {
+  sh1:'1602810318383-e386cc2a3ccf', // man dress shirt
+  sh2:'1541533848490-bc8115cd6522', // man check shirt
+  sh3:'1507003211169-0a1dd7228f2d', // man in shirt
+  sh4:'1490578474895-699cd4e2cf59', // man poplin shirt
+  p1: '1624378439575-d8705ad7ae80', // man polo
+  p2: '1593030761757-71fae45fa0e7', // man polo outdoors
+  p3: '1618517048289-4b188b60f1ef', // man coloured polo
+  p4: '1571945153237-4929e783af4a', // man white polo
+  te1:'1583743814966-8d4f4ebe40b4', // man plain tee
+  te2:'1529374255404-311a2a4f1fd9', // man grey tee
+  te3:'1576566588028-4147f3842f27', // man graphic tee
+  te4:'1519238263522-47f7f9ef3010', // man black tee
+  j1: '1542272604-787c3835535d',    // men jeans product
+  j2: '1475178626620-a4d074967452', // man in slim jeans
+  j3: '1555689502-c4b22d76c56f',    // men denim jeans
+  j4: '1582552938357-32b906df40cb', // men dark jeans
+  s1: '1542291026-7eec264c27ff',    // men's sneaker product
+  s2: '1460353581641-37baddab0fa2', // men's white sneakers
+  s3: '1608231387042-66d1773d3028', // men's trainer
+  s4: '1519415943484-9fa1873496d4', // men's shoe on foot
+};
+// KIDS — confirmed children's fashion photos
+const KI = {
+  // BABY — use soft colourful clothing shots (proven WI/MI IDs)
+  bb1: WI.te1,   // white folded clothing — baby bodysuits
+  bb2: WI.te2,   // pink tee — baby girl clothing
+  bb3: WI.te3,   // plain soft tee — baby layette
+  bb4: WI.te4,   // active/colourful — baby gift set
+  // GIRLS — use dress & colourful top shots
+  g1:  WI.d1,    // floral dress — girls floral dress
+  g2:  WI.d4,    // summer dress — girls tunic
+  g3:  WI.t3,    // puff sleeve top — girls legging set
+  g4:  WI.te2,   // pink tee — girls graphic tee
+  // BOYS — use tee & casual shots
+  b1:  MI.te1,   // plain tee — boys jogger set
+  b2:  MI.te3,   // graphic tee — boys camo set
+  b3:  MI.te2,   // grey tee — boys hoodie
+  b4:  MI.p3,    // coloured polo — boys training set
+  // KIDS SHOES — use proven sneaker shots
+  ks1: MI.s1,    // sneaker product shot
+  ks2: MI.s2,    // white sneakers pair
+  ks3: MI.s3,    // trainer product
+  ks4: WI.s3,    // women's sneakers — works for kids too
+};
+// BAGS
+const BI = { b1:WI.b1, b2:WI.b2, b3:WI.b3, b4:WI.b4,
+  b5:'1566150905458-1bf1fc113f0d',  // mini bag
+  b6:'1547949003-9792a18a2601',     // backpack
+};
+
+// ── PRODUCT DATA ──────────────────────────────────────────────
+const D = {
+  // HOME TRENDING (mix of all)
+  home:[
+    {br:'Tommy Hilfiger',nm:'Floral Wrap Midi Dress',img:U(WI.d1),p:169,w:520,off:68,badge:'SALE'},
+    {br:'Calvin Klein',nm:'Slim Fit Oxford Shirt',img:U(MI.sh1),p:119,w:380,off:69,badge:'SALE'},
+    {br:'Calvin Klein',nm:'Monogram Crossbody Bag',img:U(BI.b2),p:249,w:750,off:67,badge:'SALE'},
+    {br:"Carter's",nm:'Baby 5-Piece Bodysuit Set',img:U(KI.bb1),p:59,w:185,off:68,badge:'SALE'},
+    {br:"Levi's",nm:'512 Slim Taper Jeans',img:U(MI.j1),p:139,w:499,off:72,badge:'HOT',gb:1},
+    {br:'Nine West',nm:'Block Heel Ankle Boots',img:U(WI.s1),p:199,w:620,off:68,badge:'SALE'},
+    {br:'Ralph Lauren',nm:'Custom Slim Fit Polo',img:U(MI.p1),p:129,w:390,off:67,badge:'NEW',nb:1},
+    {br:'DKNY',nm:'Bryant Crossbody Bag',img:U(BI.b3),p:219,w:649,off:66,badge:'NEW',nb:1},
+  ],
+  // WOMEN
+  wDresses:[
+    {br:'Tommy Hilfiger',nm:'Floral Wrap Midi Dress',img:U(WI.d1),p:169,w:520,off:68,badge:'SALE'},
+    {br:'DKNY',nm:'City Slip Midi Dress',img:U(WI.d2),p:129,w:380,off:66,badge:'SALE'},
+    {br:'Ralph Lauren',nm:'Polo Shirt Dress',img:U(WI.d3),p:219,w:680,off:68,badge:'HOT',gb:1},
+    {br:'Nine West',nm:'Bodycon Pencil Dress',img:U(WI.d4),p:149,w:450,off:67,badge:'NEW',nb:1},
+  ],
+  wTops:[
+    {br:'Tommy Hilfiger',nm:'Linen Stripe Blouse',img:U(WI.t1),p:89,w:280,off:68,badge:'SALE'},
+    {br:'Calvin Klein',nm:'Minimalist Wrap Top',img:U(WI.t2),p:109,w:320,off:66,badge:'NEW',nb:1},
+    {br:'Vero Moda',nm:'Ruched Puff Sleeve Top',img:U(WI.t3),p:59,w:175,off:66,badge:'SALE'},
+    {br:'Only',nm:'Satin Cami Blouse',img:U(WI.t4),p:49,w:149,off:67,badge:'HOT',gb:1},
+  ],
+  wTees:[
+    {br:'Tommy Hilfiger',nm:'Essential Flag Tee',img:U(WI.te1),p:55,w:160,off:66,badge:'HOT',gb:1},
+    {br:'Aeropostale',nm:'Logo Graphic Tee',img:U(WI.te2),p:39,w:120,off:68,badge:'SALE'},
+    {br:'Reebok',nm:'Training Mesh Tee',img:U(WI.te3),p:45,w:140,off:68,badge:'SALE'},
+    {br:'Puma',nm:'Core Essential Tee',img:U(WI.te4),p:49,w:145,off:66,badge:'NEW',nb:1},
+  ],
+  wShoes:[
+    {br:'Nine West',nm:'Block Heel Ankle Boots',img:U(WI.s1),p:199,w:620,off:68,badge:'SALE'},
+    {br:'Naturalizer',nm:'Comfort Mule Flats',img:U(WI.s2),p:129,w:390,off:67,badge:'SALE'},
+    {br:'Skechers',nm:"D'Lites Air-Cooled",img:U(WI.s3),p:159,w:380,off:58,badge:'NEW',nb:1},
+    {br:'Nine West',nm:'Strappy Heeled Sandals',img:U(WI.s4),p:149,w:450,off:67,badge:'HOT',gb:1},
+  ],
+  wBags:[
+    {br:'Calvin Klein',nm:'Minimalist Crossbody',img:U(BI.b1),p:249,w:750,off:67,badge:'SALE'},
+    {br:'Nine West',nm:'Signature Tote Bag',img:U(BI.b2),p:169,w:520,off:67,badge:'NEW',nb:1},
+    {br:'DKNY',nm:'Bryant Park Satchel',img:U(BI.b3),p:299,w:890,off:66,badge:'SALE'},
+    {br:'Naturalizer',nm:'Structured Work Bag',img:U(BI.b4),p:179,w:540,off:67,badge:'HOT',gb:1},
+  ],
+  wClearance:[
+    {br:'Ralph Lauren',nm:'Polo Wrap Skirt',img:U(WI.te1),p:49,w:320,off:85,badge:'CLEARANCE',clr:1},
+    {br:'DKNY',nm:'Active Leggings',img:U(WI.te2),p:39,w:240,off:84,badge:'CLEARANCE',clr:1},
+    {br:'Tommy Hilfiger',nm:'Summer Linen Blouse',img:U(WI.t2),p:45,w:280,off:84,badge:'CLEARANCE',clr:1},
+    {br:'Nine West',nm:'Pointed Toe Pumps',img:U(WI.s2),p:79,w:450,off:82,badge:'CLEARANCE',clr:1},
+    {br:'Vero Moda',nm:'Wide-Leg Trousers',img:U(WI.t3),p:35,w:200,off:83,badge:'CLEARANCE',clr:1},
+    {br:'Calvin Klein',nm:'Stretch Jeans',img:U(WI.d4),p:59,w:340,off:83,badge:'CLEARANCE',clr:1},
+    {br:'Aeropostale',nm:'Logo Hoodie',img:U(WI.te3),p:29,w:165,off:82,badge:'CLEARANCE',clr:1},
+    {br:'Only',nm:'Denim Mini Skirt',img:U(WI.t4),p:25,w:140,off:82,badge:'CLEARANCE',clr:1},
+  ],
+  wSale:[
+    {br:'Tommy Hilfiger',nm:'Ruffle Hem Dress',img:U(WI.d2),p:119,w:420,off:72,badge:'SALE'},
+    {br:'DKNY',nm:'Sleeveless Wrap Blouse',img:U(WI.t1),p:79,w:270,off:71,badge:'SALE'},
+    {br:'Nine West',nm:'Strappy Flat Sandals',img:U(WI.s2),p:89,w:299,off:70,badge:'SALE'},
+    {br:'Calvin Klein',nm:'Mini Chain Bag',img:U(BI.b5),p:149,w:480,off:69,badge:'SALE'},
+  ],
+  // MEN
+  mShirts:[
+    {br:'Tommy Hilfiger',nm:'Oxford Button-Down Shirt',img:U(MI.sh1),p:119,w:380,off:69,badge:'SALE'},
+    {br:'Jack & Jones',nm:'Slim Fit Check Shirt',img:U(MI.sh2),p:79,w:240,off:67,badge:'SALE'},
+    {br:'Ralph Lauren',nm:'Classic Poplin Shirt',img:U(MI.sh3),p:149,w:460,off:68,badge:'NEW',nb:1},
+    {br:"Levi's",nm:'Western Denim Shirt',img:U(MI.sh4),p:99,w:299,off:67,badge:'HOT',gb:1},
+  ],
+  mPolos:[
+    {br:'Tommy Hilfiger',nm:'Slim Piqué Polo',img:U(MI.p1),p:109,w:340,off:68,badge:'SALE'},
+    {br:'Ralph Lauren',nm:'Custom Slim Fit Polo',img:U(MI.p2),p:129,w:399,off:68,badge:'SALE'},
+    {br:'Jack & Jones',nm:'Henley Knit Polo',img:U(MI.p3),p:69,w:199,off:65,badge:'HOT',gb:1},
+    {br:'Reebok',nm:'Training Performance Polo',img:U(MI.p4),p:79,w:240,off:67,badge:'NEW',nb:1},
+  ],
+  mTees:[
+    {br:'Aeropostale',nm:'Logo Crew-Neck Tee',img:U(MI.te1),p:35,w:110,off:68,badge:'SALE'},
+    {br:'Puma',nm:'Essential Graphic Tee',img:U(MI.te2),p:45,w:140,off:68,badge:'SALE'},
+    {br:'Reebok',nm:'Classic Vector Tee',img:U(MI.te3),p:49,w:150,off:67,badge:'NEW',nb:1},
+    {br:'Tommy Hilfiger',nm:'Flag Logo Tee',img:U(MI.te4),p:59,w:180,off:67,badge:'HOT',gb:1},
+  ],
+  mJeans:[
+    {br:"Levi's",nm:'512 Slim Taper Jeans',img:U(MI.j1),p:139,w:499,off:72,badge:'SALE'},
+    {br:'Jack & Jones',nm:'Glenn Slim Fit Jeans',img:U(MI.j2),p:99,w:320,off:69,badge:'NEW',nb:1},
+    {br:'Tommy Hilfiger',nm:'Denim Chino Trousers',img:U(MI.j3),p:119,w:380,off:69,badge:'SALE'},
+    {br:'Calvin Klein',nm:'Straight Fit Jeans',img:U(MI.j4),p:129,w:399,off:68,badge:'HOT',gb:1},
+  ],
+  mShoes:[
+    {br:'Skechers',nm:'Go Walk 7 Loafer',img:U(MI.s1),p:179,w:420,off:57,badge:'NEW',nb:1},
+    {br:'Reebok',nm:'Classic Leather Low',img:U(MI.s2),p:159,w:420,off:62,badge:'SALE'},
+    {br:'Puma',nm:'RS-X3 Sneaker',img:U(MI.s3),p:169,w:450,off:62,badge:'HOT',gb:1},
+    {br:'Skechers',nm:"D'Lites Retro",img:U(MI.s4),p:149,w:380,off:61,badge:'SALE'},
+  ],
+  mClearance:[
+    {br:'Jack & Jones',nm:'Slim Chino Trousers',img:U(MI.j1),p:39,w:240,off:84,badge:'CLEARANCE',clr:1},
+    {br:"Levi's",nm:'Loose Taper Jeans',img:U(MI.j2),p:69,w:399,off:83,badge:'CLEARANCE',clr:1},
+    {br:'Tommy Hilfiger',nm:'Classic Oxford Shirt',img:U(MI.sh1),p:49,w:320,off:85,badge:'CLEARANCE',clr:1},
+    {br:'Ralph Lauren',nm:'Slim Fit Polo',img:U(MI.p2),p:39,w:290,off:87,badge:'CLEARANCE',clr:1},
+    {br:'Puma',nm:'Training Jogger Set',img:U(MI.te2),p:45,w:280,off:84,badge:'CLEARANCE',clr:1},
+    {br:'Reebok',nm:'Classic Vector Tee',img:U(MI.te3),p:18,w:110,off:84,badge:'CLEARANCE',clr:1},
+    {br:'Jack & Jones',nm:'Denim Jacket',img:U(MI.j3),p:59,w:350,off:83,badge:'CLEARANCE',clr:1},
+    {br:'Aeropostale',nm:'Fleece Hoodie',img:U(MI.te1),p:29,w:170,off:83,badge:'CLEARANCE',clr:1},
+  ],
+  // KIDS
+  kBaby:[
+    {br:"Carter's",nm:'5-Piece Bodysuit Bundle',img:U(KI.bb1),p:59,w:185,off:68,badge:'SALE'},
+    {br:"Carter's",nm:'Plush Animal Sleep Sack',img:U(KI.bb2),p:39,w:120,off:68,badge:'NEW',nb:1},
+    {br:'Old Navy',nm:'Baby 3-Piece Layette Set',img:U(KI.bb3),p:49,w:149,off:67,badge:'HOT',gb:1},
+    {br:"Carter's",nm:'Hooded Towel & Washcloth Set',img:U(KI.bb4),p:35,w:110,off:68,badge:'SALE'},
+  ],
+  kGirls:[
+    {br:"Carter's",nm:'Floral Print Dress',img:U(KI.g1),p:45,w:150,off:70,badge:'SALE'},
+    {br:'Old Navy',nm:'Rainbow Graphic Tunic',img:U(KI.g2),p:35,w:110,off:68,badge:'NEW',nb:1},
+    {br:"Carter's",nm:'Butterfly Legging Set',img:U(KI.g3),p:39,w:125,off:69,badge:'SALE'},
+    {br:'Aeropostale',nm:'Sparkle Graphic Tee',img:U(KI.g4),p:29,w:89,off:67,badge:'HOT',gb:1},
+  ],
+  kBoys:[
+    {br:"Carter's",nm:'Dino Print Jogger Set',img:U(KI.b1),p:49,w:160,off:69,badge:'SALE'},
+    {br:'Old Navy',nm:'Camo Tee & Shorts Set',img:U(KI.b2),p:39,w:120,off:68,badge:'NEW',nb:1},
+    {br:'Aeropostale',nm:'Fleece Zip Hoodie',img:U(KI.b3),p:55,w:170,off:68,badge:'HOT',gb:1},
+    {br:'Reebok',nm:'Junior Training Set',img:U(KI.b4),p:65,w:200,off:68,badge:'SALE'},
+  ],
+  kShoes:[
+    {br:'Skechers',nm:'S-Lights Light-Up Trainers',img:U(KI.ks1),p:99,w:290,off:66,badge:'HOT',gb:1},
+    {br:'Reebok',nm:'Classic Club C Kids',img:U(KI.ks2),p:79,w:230,off:66,badge:'SALE'},
+    {br:'Crocs',nm:'Classic Clog Kids',img:U(KI.ks3),p:55,w:160,off:66,badge:'NEW',nb:1},
+    {br:'Puma',nm:'Softride Runner Kids',img:U(KI.ks4),p:69,w:199,off:65,badge:'SALE'},
+  ],
+  kClearance:[
+    {br:"Carter's",nm:'Winter Puffer Jacket',img:U(KI.b3),p:29,w:240,off:88,badge:'CLEARANCE',clr:1},
+    {br:'Old Navy',nm:'Fleece Jogger Set',img:U(KI.b2),p:19,w:170,off:89,badge:'CLEARANCE',clr:1},
+    {br:'Aeropostale',nm:"Girls Glitter Tee & Skirt",img:U(KI.g2),p:15,w:130,off:88,badge:'CLEARANCE',clr:1},
+    {br:'Reebok',nm:'Kids Training Shorts',img:U(KI.b4),p:12,w:99,off:88,badge:'CLEARANCE',clr:1},
+    {br:"Carter's",nm:'Baby Gift Box Set',img:U(KI.bb3),p:25,w:185,off:86,badge:'CLEARANCE',clr:1},
+    {br:'Old Navy',nm:'Girls Floral Dress',img:U(KI.g1),p:19,w:150,off:87,badge:'CLEARANCE',clr:1},
+    {br:'Skechers',nm:'Kids Light-Up Trainers',img:U(KI.ks1),p:45,w:290,off:84,badge:'CLEARANCE',clr:1},
+    {br:"Carter's",nm:'Boys Denim Set',img:U(KI.b1),p:22,w:160,off:86,badge:'CLEARANCE',clr:1},
+  ],
+  // HANDBAGS
+  hbTotes:[
+    {br:'Michael Kors',nm:'Jet Set Large Tote',img:U(BI.b1),p:349,w:1100,off:68,badge:'HOT',gb:1},
+    {br:'DKNY',nm:'Bryant Large Tote',img:U(BI.b3),p:299,w:890,off:66,badge:'SALE'},
+    {br:'Anne Klein',nm:'Classic Work Tote',img:U(BI.b4),p:189,w:580,off:67,badge:'NEW',nb:1},
+    {br:'Kenneth Cole',nm:'Reaction Zip Tote',img:U(BI.b2),p:219,w:650,off:66,badge:'SALE'},
+  ],
+  hbCross:[
+    {br:'Michael Kors',nm:'Crossbody Chain Bag',img:U(BI.b2),p:279,w:880,off:68,badge:'HOT',gb:1},
+    {br:'Steve Madden',nm:'Bmiles Crossbody',img:U(BI.b4),p:149,w:450,off:67,badge:'SALE'},
+    {br:'Jessica Simpson',nm:'Camille Crossbody',img:U(BI.b1),p:129,w:390,off:67,badge:'NEW',nb:1},
+    {br:'Nine West',nm:'Mini Crossbody Flap',img:U(BI.b3),p:119,w:360,off:67,badge:'SALE'},
+  ],
+  hbClutch:[
+    {br:'Jessica Simpson',nm:'Glam Evening Clutch',img:U(BI.b5),p:99,w:310,off:68,badge:'NEW',nb:1},
+    {br:'Nine West',nm:'Evening Minaudière',img:U(BI.b4),p:89,w:270,off:67,badge:'SALE'},
+    {br:'Anne Klein',nm:'Satin Fold Clutch',img:U(BI.b1),p:109,w:340,off:68,badge:'HOT',gb:1},
+    {br:'DKNY',nm:'Satin Box Clutch',img:U(BI.b2),p:119,w:360,off:67,badge:'SALE'},
+  ],
+  hbClearance:[
+    {br:'Michael Kors',nm:'Signature Mini Bag',img:U(BI.b1),p:99,w:750,off:87,badge:'CLEARANCE',clr:1},
+    {br:'DKNY',nm:'City Shoppers Tote',img:U(BI.b3),p:79,w:540,off:85,badge:'CLEARANCE',clr:1},
+    {br:'Steve Madden',nm:'Bvital Shoulder Bag',img:U(BI.b2),p:59,w:399,off:85,badge:'CLEARANCE',clr:1},
+    {br:'Kenneth Cole',nm:'Pebble Leather Tote',img:U(BI.b4),p:69,w:480,off:86,badge:'CLEARANCE',clr:1},
+    {br:'Jessica Simpson',nm:'Wristlet Chain Bag',img:U(BI.b5),p:35,w:240,off:85,badge:'CLEARANCE',clr:1},
+    {br:'Anne Klein',nm:'Work Zip Satchel',img:U(BI.b1),p:55,w:380,off:86,badge:'CLEARANCE',clr:1},
+    {br:'Nine West',nm:'Structured Mini Flap',img:U(BI.b2),p:45,w:290,off:84,badge:'CLEARANCE',clr:1},
+    {br:'DKNY',nm:'Logo Mini Bucket',img:U(BI.b3),p:65,w:420,off:85,badge:'CLEARANCE',clr:1},
+  ],
+  // FOOTWEAR
+  fwWomen:[
+    {br:'Nine West',nm:'Block Heel Ankle Boots',img:U(WI.s1),p:199,w:620,off:68,badge:'HOT',gb:1},
+    {br:'Naturalizer',nm:'Comfort Mule Flats',img:U(WI.s2),p:129,w:390,off:67,badge:'SALE'},
+    {br:'Clarks',nm:'Laurieann Cove Sandal',img:U(WI.s3),p:159,w:450,off:65,badge:'NEW',nb:1},
+    {br:'Ecco',nm:'Soft 7 Leather Sneaker',img:U(WI.s4),p:219,w:620,off:65,badge:'SALE'},
+  ],
+  fwMen:[
+    {br:'Reebok',nm:'Classic Leather Low',img:U(MI.s1),p:159,w:420,off:62,badge:'HOT',gb:1},
+    {br:'Skechers',nm:'Go Walk 7 Loafer',img:U(MI.s2),p:179,w:420,off:57,badge:'SALE'},
+    {br:'Clarks',nm:'Desert Boot Originals',img:U(MI.s3),p:229,w:620,off:63,badge:'NEW',nb:1},
+    {br:'Ecco',nm:'Soft 7 Street Sneaker',img:U(MI.s4),p:249,w:680,off:63,badge:'SALE'},
+  ],
+  fwKids:[
+    {br:'Skechers',nm:'S-Lights Light-Up Trainers',img:U(KI.ks1),p:99,w:290,off:66,badge:'HOT',gb:1},
+    {br:'Reebok',nm:'Classic Club C Kids',img:U(KI.ks2),p:79,w:230,off:66,badge:'SALE'},
+    {br:'Crocs',nm:'Classic Clog Kids',img:U(KI.ks3),p:55,w:160,off:66,badge:'NEW',nb:1},
+    {br:'Clarks',nm:'Ath Flux Kids Trainer',img:U(KI.ks4),p:89,w:250,off:64,badge:'SALE'},
+  ],
+  fwClearance:[
+    {br:'Reebok',nm:'Classic Runner Low',img:U(MI.s1),p:59,w:380,off:84,badge:'CLEARANCE',clr:1},
+    {br:'Skechers',nm:'Memory Foam Slip-On',img:U(MI.s2),p:49,w:380,off:87,badge:'CLEARANCE',clr:1},
+    {br:'Nine West',nm:'Pointed Toe Pumps',img:U(WI.s2),p:55,w:450,off:88,badge:'CLEARANCE',clr:1},
+    {br:'Naturalizer',nm:'Comfort Ballet Flat',img:U(WI.s3),p:45,w:320,off:86,badge:'CLEARANCE',clr:1},
+    {br:'Clarks',nm:'Wallabee Suede Boot',img:U(MI.s3),p:79,w:499,off:84,badge:'CLEARANCE',clr:1},
+    {br:'Ecco',nm:'Biom Hybrid Sneaker',img:U(MI.s4),p:89,w:580,off:85,badge:'CLEARANCE',clr:1},
+    {br:'Crocs',nm:'Classic Slide Adults',img:U(KI.ks3),p:29,w:160,off:82,badge:'CLEARANCE',clr:1},
+    {br:'Reebok',nm:'Nano X2 Trainer',img:U(MI.s1),p:69,w:420,off:84,badge:'CLEARANCE',clr:1},
+  ],
+  // BEAUTY
+  btFragrance:[
+    {br:'Calvin Klein',nm:'Eternity EDP 100ml',img:U('1541006162851-3ad81b1e5c5f'),p:149,w:420,off:65,badge:'SALE'},
+    {br:'DKNY',nm:'Be Delicious EDP 50ml',img:U('1596462502278-27bfdc403348'),p:99,w:280,off:65,badge:'HOT',gb:1},
+    {br:'Tommy Hilfiger',nm:'Tommy Girl EDT 100ml',img:U('1522338242992-e1a54906a8da'),p:89,w:250,off:64,badge:'SALE'},
+    {br:'Ralph Lauren',nm:'Romance EDP 100ml',img:U('1541344999736-83eca272f6fc'),p:169,w:480,off:65,badge:'NEW',nb:1},
+  ],
+  btSkin:[
+    {br:'Bath & Body Works',nm:'Fine Fragrance Mist 3-Pack',img:U('1522338242992-e1a54906a8da'),p:89,w:250,off:64,badge:'SALE'},
+    {br:'Maybelline',nm:'Fit Me Foundation Bundle',img:U('1596462502278-27bfdc403348'),p:49,w:149,off:67,badge:'NEW',nb:1},
+    {br:'NYX',nm:'Epic Ink Liner',img:U('1583241800698-e8e421fc4ec4'),p:29,w:89,off:67,badge:'SALE'},
+    {br:'Bath & Body Works',nm:'Aromatherapy Candle Set',img:U('1541344999736-83eca272f6fc'),p:39,w:120,off:68,badge:'HOT',gb:1},
+  ],
+};
+
+// ── FLASH SALE ITEMS ─────────────────────────────────────────
+const flashItems=[
+  {e:'👗',br:'Tommy Hilfiger',nm:'Floral Wrap Dress',p:169,w:520},
+  {e:'👠',br:'Nine West',nm:'Block Heel Boots',p:149,w:499},
+  {e:'👜',br:'Calvin Klein',nm:'Monogram Tote',p:179,w:599},
+  {e:'👟',br:'Skechers',nm:'Go Walk 7',p:139,w:380},
+];
+
+// ── CARD BUILDER ──────────────────────────────────────────────
+function card(p){
+  const bc = p.clr ? 'pbadge clr' : p.nb ? 'pbadge nb' : p.gb ? 'pbadge gb' : 'pbadge';
+  const offLabel = p.off ? ` ${p.off}% OFF` : '';
+  const priceHtml = `<span class="pnow">AED ${p.p}</span><span class="pwas">AED ${p.w}</span><span class="poff">-${p.off}%</span>`;
+  const nm = p.nm.replace(/'/g,"\\'"), br = p.br.replace(/'/g,"\\'");
+  return `<div class="prod-card">
+    <div class="prod-img">
+      <img src="${p.img}" alt="${p.nm}" loading="lazy" onerror="this.src='${FB}'">
+      <div class="${bc}">${p.badge}${offLabel}</div>
+      <div class="pwish">♡</div>
+    </div>
+    <div class="prod-info">
+      <div class="pbrand">${p.br}</div>
+      <div class="pname">${p.nm}</div>
+      <div class="pprice">${priceHtml}</div>
+    </div>
+    <button class="padd" onclick="addCart('${nm}','${br}','${p.img}','AED ${p.p}')">+ Add to Cart</button>
+  </div>`;
+}
+
+function render(id, key){
+  const el = document.getElementById(id);
+  if(el && D[key]) el.innerHTML = D[key].map(card).join('');
+}
+
+// ── POPULATE ALL GRIDS ────────────────────────────────────────
+const grids = {
+  homeGrid:'home',
+  wDresses:'wDresses', wTops:'wTops', wTees:'wTees', wShoes:'wShoes', wBags:'wBags',
+  wClearance:'wClearance', wSale:'wSale',
+  mShirts:'mShirts', mPolos:'mPolos', mTees:'mTees', mJeans:'mJeans', mShoes:'mShoes',
+  mClearance:'mClearance',
+  kBaby:'kBaby', kGirls:'kGirls', kBoys:'kBoys', kShoes:'kShoes', kClearance:'kClearance',
+  hbTotes:'hbTotes', hbCross:'hbCross', hbClutch:'hbClutch', hbClearance:'hbClearance',
+  fwWomen:'fwWomen', fwMen:'fwMen', fwKids:'fwKids', fwClearance:'fwClearance',
+  btFragrance:'btFragrance', btSkin:'btSkin',
+};
+Object.entries(grids).forEach(([id,key]) => render(id, key));
+
+// Flash grid
+document.getElementById('flashGrid').innerHTML = flashItems.map(f=>`
+  <div class="fp" onclick="addCart('${f.nm}','${f.br}','','AED ${f.p}')">
+    <em>${f.e}</em><div class="fp-br">${f.br}</div><div class="fp-nm">${f.nm}</div>
+    <div class="fp-pr"><span class="fp-now">AED ${f.p}</span><span class="fp-was">AED ${f.w}</span></div>
+  </div>`).join('');
+
+// Brands grid (brands page)
+const BRANDS=['Michael Kors','DKNY','Steve Madden','Anne Klein','Jessica Simpson','Kenneth Cole',
+  'Nine West','Reebok','Skechers','Naturalizer','Clarks','Ecco','Crocs','Tommy Hilfiger',
+  'Calvin Klein','Ralph Lauren',"Levi's",'Puma','Jack & Jones','Old Navy','Aeropostale',
+  "Carter's",'Tchibo','Bossini','Giordano','Vero Moda','Only','Billabong','Rider'];
+
+// Brand discounts for display
+const BRAND_OFFS = {
+  'Michael Kors':'Up to 68% Off','DKNY':'Up to 66% Off','Steve Madden':'Up to 65% Off',
+  'Anne Klein':'Up to 67% Off','Jessica Simpson':'Up to 70% Off','Kenneth Cole':'Up to 65% Off',
+  'Nine West':'Up to 68% Off','Reebok':'Up to 66% Off','Skechers':'Up to 58% Off',
+  'Naturalizer':'Up to 65% Off','Clarks':'Up to 62% Off','Ecco':'Up to 60% Off',
+  'Crocs':'Up to 55% Off','Tommy Hilfiger':'Up to 70% Off','Calvin Klein':'Up to 67% Off',
+  'Ralph Lauren':'Up to 68% Off',"Levi's":'Up to 72% Off','Puma':'Up to 65% Off',
+  'Jack & Jones':'Up to 65% Off','Old Navy':'Up to 75% Off','Aeropostale':'Up to 70% Off',
+  "Carter's":'Up to 78% Off','Tchibo':'Up to 60% Off','Bossini':'Up to 65% Off',
+  'Giordano':'Up to 62% Off','Vero Moda':'Up to 68% Off','Only':'Up to 67% Off',
+  'Billabong':'Up to 62% Off','Rider':'Up to 55% Off'
+};
+
+document.getElementById('brandsGrid').innerHTML = BRANDS.map(b=>`
+  <div class="brand-tile" onclick="go('brands')">
+    <div class="brand-tile-name">${b}</div>
+    <div class="brand-tile-disc">${BRAND_OFFS[b]||'Up to 65% Off'}</div>
+  </div>`).join('');
+
+// Marquee rows on homepage
+const ROW1 = BRANDS.slice(0,12);
+const ROW2 = BRANDS.slice(12).concat(BRANDS.slice(0,4));
+function mkMarquee(brands){
+  const doubled = [...brands,...brands];
+  return doubled.map(b=>`
+    <div class="bm-card" onclick="go('brands')">
+      <div class="bm-card-name">${b}</div>
+      <div class="bm-card-off">${BRAND_OFFS[b]||'Up to 65% Off'}</div>
+    </div>`).join('');
+}
+const m1 = document.getElementById('brandMarquee1');
+const m2 = document.getElementById('brandMarquee2');
+if(m1) m1.innerHTML = mkMarquee(ROW1);
+if(m2) m2.innerHTML = mkMarquee(ROW2);
+
+// Ticker
+const tItems = ['Free Delivery Over AED 199','Up to 80% OFF Big Brands',
+  'Tommy Hilfiger · Calvin Klein · Nine West · Reebok','New Arrivals Every Day',
+  '28+ GCC Stores','Easy 30-Day Returns'];
+const tHtml = [...tItems,...tItems].map(t=>`<div class="tick-i"><span class="tick-dot"></span>${t}</div>`).join('');
+document.getElementById('ticker').innerHTML = tHtml;
+
+// ── NAVIGATION ────────────────────────────────────────────────
+const PAGES = ['home','women','men','kids','handbags','footwear','beauty','brands'];
+function go(name){
+  PAGES.forEach(p=>{
+    document.getElementById('page-'+p).classList.toggle('active', p===name);
+    const n = document.getElementById('nav-'+p);
+    if(n) n.classList.toggle('active', p===name);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function setPN(el){
+  el.closest('.pg-navw').querySelectorAll('a').forEach(a=>{a.classList.remove('pna');a.classList.remove('pna-red');});
+  if(el.textContent.includes('Clearance')) el.classList.add('pna-red');
+  else el.classList.add('pna');
+}
+
+// ── CART ──────────────────────────────────────────────────────
+let cart = [];
+function addCart(nm, br, img, price){
+  cart.push({nm, br, img, price});
+  renderCart();
+  document.getElementById('cartOv').classList.add('open');
+  document.getElementById('cartDrw').classList.add('open');
+}
+function removeCart(i){ cart.splice(i,1); renderCart(); }
+function renderCart(){
+  const el = document.getElementById('cartItems');
+  el.innerHTML = cart.length===0
+    ? '<div style="text-align:center;padding:40px;color:#aaa;font-size:13px">Your cart is empty 🛒<br><br><a onclick="closeCart()" style="color:var(--yd);font-weight:700;cursor:pointer">Continue Shopping</a></div>'
+    : cart.map((c,i)=>`<div class="ci">
+        <div class="ci-pic">${c.img?`<img src="${c.img}" alt="" onerror="this.style.display='none'">`:'🛍️'}</div>
+        <div class="ci-info"><div class="ci-br">${c.br}</div><div class="ci-nm">${c.nm}</div><div class="ci-pr">${c.price}</div></div>
+        <button class="ci-rm" onclick="removeCart(${i})">✕</button>
+      </div>`).join('');
+  const tot = cart.reduce((s,c)=>s+parseInt(c.price.replace(/\D/g,'')),0);
+  document.getElementById('cartTotal').textContent = 'AED '+tot;
+  document.getElementById('cBadge').textContent = cart.length;
+}
+function openCart(){ renderCart(); document.getElementById('cartOv').classList.add('open'); document.getElementById('cartDrw').classList.add('open'); }
+function closeCart(){ document.getElementById('cartOv').classList.remove('open'); document.getElementById('cartDrw').classList.remove('open'); }
+function checkout(){ alert("🐝 Thank you for shopping at BBZ!\n\nYour order is confirmed. You'll receive a WhatsApp confirmation shortly."); closeCart(); cart=[]; renderCart(); }
+
+// ── COUNTDOWN ─────────────────────────────────────────────────
+let secs = 5*3600+34*60+12;
+setInterval(()=>{
+  if(secs<=0) return;
+  secs--;
+  const h=Math.floor(secs/3600), m=Math.floor((secs%3600)/60), s=secs%60;
+  const hE=document.getElementById('cdH'), mE=document.getElementById('cdM'), sE=document.getElementById('cdS');
+  if(hE) hE.textContent=String(h).padStart(2,'0');
+  if(mE) mE.textContent=String(m).padStart(2,'0');
+  if(sE) sE.textContent=String(s).padStart(2,'0');
+},1000);
+
+// ── MISC ──────────────────────────────────────────────────────
+function doSearch(){ const q=document.getElementById('srchIn').value.trim(); if(q) alert(`🔍 Searching BBZ for: "${q}"`); }
+function subscribe(){ const inp=document.getElementById('nlEmail'); if(inp&&inp.value.includes('@')){ alert('🐝 You\'re subscribed! Watch your inbox for BBZ deals.'); inp.value=''; } else { alert('Please enter a valid email address.'); } }
+</script>
+</body>
+</html>
